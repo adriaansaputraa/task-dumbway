@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task 2</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        *{
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        nav ul img{
+            width: 55px;
+            height: 55px;
+            margin-top: 4px;
+            object-fit: contain;
+            margin-right: 30px;
+        }
+
+        nav{
+            display: flex;
+            background-color: lightgray;
+            height: 70px;
+        }
+
+        nav ul{
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            align-items: center;
+            background-color: lightgray;
+            width: 100%;
+        }
+
+        nav ul li{
+            list-style-type: none;
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+            font-size: medium;
+        }
+
+        .nav-right{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 60%;
+            margin-right: 40px;
+        }
+
+        .nav-right a{
+            background-color: black;
+            text-decoration: none;
+            color: white;
+            padding: 7px;
+            border-radius: 10px;
+        }
+
+        .card-home{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            height:500px;
+            padding: 10px;
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 5px;
+        }
+
+        nav ul li a:hover{
+            font-weight: bold;
+        }
+
+        .nav-right a:hover{
+            background-color: rgb(45, 45, 45);
+            padding: 9px;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="Image/LogoYoutube.png" alt=""></li>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#">Contact Me</a>
+        </div>
+    </nav>
+    
+    <div class="card-home">
+        <h1>Welcome to My Website</h1>
+    </div>
+    
+</body>
+</html>
