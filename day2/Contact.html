@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task 2</title>
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        *{
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        nav ul img{
+            width: 55px;
+            height: 55px;
+            margin-top: 4px;
+            object-fit: contain;
+            margin-left: 30px;
+        }
+
+        nav{
+            display: flex;
+            background-color: lightgray;
+            height: 70px;
+        }
+
+        nav ul{
+            display: flex;
+            gap: 20px;
+            height: 100%;
+            align-items: center;
+            background-color: lightgray;
+            width: 100%;
+        }
+
+        nav ul li{
+            list-style-type: none;
+            margin-right: 30px;
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+            font-size: medium;
+        }
+
+        .nav-right{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 60%;
+            margin-right: 40px;
+        }
+
+        .nav-right a{
+            background-color: black;
+            text-decoration: none;
+            color: white;
+            padding: 7px;
+            border-radius: 10px;
+        }
+
+        .form-container{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+        }
+
+        .form-container div{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            padding-top: 60px;
+            background-color: rgb(230, 230, 230);
+        }
+        .form-container div h2{
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .form-container div label {
+            font-size: medium;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .form-container div select {
+            height: 35px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 6px solid transparent;
+            box-shadow: 0px 1.5px 2px;
+            
+        }
+
+        input {
+            background-color: white;
+            padding: 5px;
+            outline: none;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 1.5px 2px;
+        }
+
+
+        nav ul li a:hover{
+            font-weight: bold;
+        }
+
+        .nav-right a:hover{
+            background-color: rgb(45, 45, 45);
+            padding: 9px;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="#">My Project</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#">Contact Me</a>
+        </div>
+    </nav>
+    
+    <div class="contact-container">
+        <form class="form-container">
+            <div>
+                <h2>GET IN TOUCH</h2>
+                <label>
+                    Name
+                </label>
+                <input />
+            </div>
+            <div>
+                <label>
+                    Email
+                </label>
+                <input />
+            </div>
+            <div>
+                <label>
+                    Phone Number
+                </label>
+                <input />
+            </div>
+            <div>
+                <label>
+                    Subject
+                </label>
+                <select>
+                    <option></option>
+                    <option>Frontend Developer</option>
+                    <option>Backend Developer</option>
+                    <option>Fullstack Developer</option>
+                </select>
+            </div>
+            <div>
+                <label>
+                    Your message
+                </label>
+                <textarea></textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>
