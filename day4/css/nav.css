@@ -1,0 +1,76 @@
+nav ul img{
+    width: 55px;
+    height: 55px;
+    margin-top: 4px;
+    object-fit: contain;
+    margin-left: 30px;
+}
+
+nav{
+    display: flex;
+    background-color: lightgray;
+    height: 70px;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+    background-color: lightgray;
+    width: 100%;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin-right: 30px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: medium;
+}
+
+nav ul li a.active{
+    font-weight: bold;
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+    margin-right: 40px;
+}
+
+.nav-right a{
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.card-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height:500px;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px;
+}
+
+nav ul li a:hover{
+    font-weight: bold;
+}
+
+.nav-right a:hover{
+    background-color: orange;
+    padding: 9px;
+}
