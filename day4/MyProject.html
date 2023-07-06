@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Project</title>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/nav.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(229, 229, 229);
+        }
+
+        label{
+            font-size:large;
+            font-weight: bold;
+        }
+
+        input{
+            background-color: white;
+            padding: 0.8em;
+            border-radius: 0.4em;
+            border: none;
+            box-shadow: 0px 1.5px 2px;
+            margin-top: 0.5em;
+        }
+
+        .Form-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .container{
+            width: 30%;
+            height: 80%;
+        }
+        .container h1{
+            text-align: center;
+            margin-bottom: 1em;
+            margin-top: 2em;
+        }
+
+        .Project-name{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .Date-container{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+        }
+
+        .Date-container div{
+            display: flex;
+            width: 48%;
+            flex-direction: column;
+        }
+
+        .Descripton-container{
+            display: flex;
+            flex-direction: column;
+            margin-top: 1em;
+        }
+
+        .Descripton-container textarea{
+            border-radius: 0.4em;
+            resize: none;
+            border: none;
+            box-shadow: 0px 1.5px 2px;
+            height: 200px;
+            padding: 1em;
+        }
+
+        .checkbox{
+            margin-top: 1em;
+
+        }
+
+        .checkbox-group {
+            margin-top: 1em;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .checkbox-group div{
+            display: flex;
+        } 
+
+        .checkbox-group div label{
+            margin-top: 3px;
+            color: rgb(62, 62, 62);
+        }
+
+        .checkbox-group div input{
+            width: 20px;
+            height: 20px;
+            margin-right: 1em;
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        .Upload-Image{
+            margin-top: 1em;
+        }
+
+        .label-image label {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .label-image label p {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgb(209, 209, 209);
+            color: rgb(158, 158, 158);
+        }
+
+        .label-image label i {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        .btn-submit{
+            margin-top: 1em;
+            border: none;
+            border-radius: 2em;
+        }
+
+        .Form-container button{
+            margin-top: 2em;
+            background-color: black;
+            color: white;
+            width: 9em;
+            cursor: pointer;
+            padding: 0.7em;
+            border-radius: 2em;
+            border: none;
+            margin-left: 22%;
+        }
+
+        .Form-container button:hover{
+            background-color: orange;
+        }
+
+        .card-result {
+            margin-top: 3em;
+            background-color: white;
+        }
+
+        .card-result h1{
+            padding-top: 1em;
+            text-align: center;
+        }
+        
+        #content {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: center;
+        }
+        
+        .container-card {
+            width: 25vw;
+            margin: 1em;
+            padding: 1em;
+            border-radius: 0.5em;
+            background-color: rgb(226, 226, 226);
+            box-sizing: border-box;
+        }
+        
+        .container-card img {
+            width: 100%;
+            border-radius: 0.5em;
+            height: 30vh;
+            object-fit: cover;
+        }
+        .container-card span{
+            color: rgb(96, 95, 95);
+        }
+        
+        .container-card p {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+        
+        .programming-language i {
+            font-size: 1.7em;
+            margin-right: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        .btn-group {
+            display: flex;
+        }
+        
+        .container-card .btn-group button {
+            width: 100%;
+            margin: 1em;
+            border-radius: 0.5em;
+            border: none;
+            padding: 0.5em;
+            background-color: black;
+            color: white;
+        }
+        
+        .btn-group button:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+
+hr {
+    border: 1px solid black;
+}
+
+    </style>
+
+</head>
+<body>
+
+<!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li><a href="Home.html">Home</a></li>
+            <li><a class="active" href="#">My Project</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="Contact.html">Contact Me</a>
+        </div>
+    </nav>
+<!-- Navigation bar -->
+
+    <form class="Form-container" id="Form-Project">
+        
+        <!-- Title --> 
+        <div class="container">
+            <h1>ADD MY PROJECT</h1>
+            <div class="Project-name">
+                <label>Project Name</label>
+                <input id="input-projectname" type="text">
+            </div>
+            
+            <div class="Date-container">
+                <div>
+                    <label>Start Date</label>
+                    <input id="input-startdate" type="date">
+                </div>
+                <div>
+                    <label>End Date</label>
+                    <input id="input-endDate" type="date">
+                </div>
+            </div>
+            
+            <div class="Descripton-container">
+                <label>Descripton</label>
+                <textarea id="input-descripton">
+                </textarea>
+            </div>
+
+            <div class="checkbox">
+                <label>Technologies</label>
+                <div class="checkbox-group">
+                    <div>
+                        <input type="checkbox" id="input-nodejs" class="multi-input" />
+                        <label>Node JS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="input-golang" class="multi-input" />
+                        <label>Golang</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="input-reactjs" class="multi-input" />
+                        <label>React JS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="input-javascript" class="multi-input"/>
+                        <label>Javascript</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Upload-Image">
+                <label>Upload Image</label>
+                <div class="label-image">
+                    <label for="input-image">
+                        <p>Choose</p>
+                        <i class="fa-solid fa-paperclip fa-fw"></i>
+                    </label>
+                    <input type="file" id="input-image" hidden />
+                </div>
+            </div>
+        </div>
+        <button type="submit" onclick="addBlog(event)">Submit</button>
+    </form>
+
+
+
+
+    <div class="card-result">
+        <hr>
+        <h1>MY PROJECT</h1>
+        <div id="content">
+            <div class="container-card">
+                <a href="detail-blog.html"><img src="Image/Orang.jpg"/></a>
+            <h3>Dumbways Mobile App - 2023</h3>
+            <span>Durasi : 3 bulan</span>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
+                Repellendus facere cupiditate similique nesciunt id quibusdam in
+                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
+                fugiat, fugit illo harum minima deleniti.
+            </p>
+            <div class="programming-language">
+                <i class="fa-brands fa-js" id="javascript"></i>
+                <i class="fa-brands fa-golang" id="golang"></i>
+                <i class="fa-brands fa-react" id="reactsJS"></i>
+                <i class="fa-brands fa-java" id="java"></i>
+            </div>
+            <div class="btn-group">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/blog.js"></script>
+
+
+
+
+</body>
+</html>
