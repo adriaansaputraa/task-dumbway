@@ -13,7 +13,72 @@ function addBlog(event) {
     let javascript = document.getElementById("input-javascript").checked;
     let file = document.getElementById("input-image").files;
 
-  // CHECK BOX FEATURES
+    //DISTANCE DATE
+
+    let distance = endDate - startDate;
+    let miliSecond = 1000;
+    let secondInHour = 3600; // convert to second
+    let hourInDay = 24;
+    let dayInWeek = 7;
+    let dayInMonth = 30;
+    let monthInYear = 12;
+
+    let distanceInDay = Math.floor(distance/(miliSecond*secondInHour*hourInDay)) //Day
+    let distanceInWeek = Math.floor(distance/(miliSecond*secondInHour*hourInDay*dayInWeek)) //Week
+    let distanceInMonth = Math.floor(distance/(miliSecond*secondInHour*hourInDay*dayInMonth)) //Month
+    let distanceInYear = Math.floor(distance/(miliSecond*secondInHour*hourInDay*dayInMonth*monthInYear)) //Year
+
+    console.log(distanceInDay)
+    console.log(distanceInWeek)
+    console.log(distanceInMonth)
+    console.log(distanceInYear)
+
+    duration = "";
+
+
+    if(distanceInDay < 8){
+        duration = `${distanceInDay} day`
+    }else if(distanceInWeek < 5){
+        if(distanceInDay - (distanceInWeek*7) > 0){
+            duration = `${distanceInWeek} Week ${distanceInDay-(distanceInWeek*7)} day`
+        }else{
+            duration = `${distanceInWeek} Week`
+        }
+    }else{
+        duration = "24 jam"
+    }
+
+
+    // if(distanceInDay < 8 && distanceInDay > 0){
+    //     duration = `${distanceInDay} day`
+    // }
+    // else if(distanceInDay >= 8 && distanceInWeek <= 4){
+        
+    //     if(distanceInDay-(distanceInWeek*7) >= 1){
+    //         duration = `${distanceInWeek} Week ${distanceInDay-(distanceInWeek*7)} day`
+    //     }
+    //     else{
+    //         duration = `${distanceInWeek} Week`
+    //     }
+    // }
+    // else if(distanceInDay >= 8 && distanceInMonth < 12){
+    //     duration = `${distanceInMonth} Month ${distanceInDay-30} day`
+    // }
+    // else if(distanceInMonth >= 12){
+    //     if(duration = `${distanceInYear} year`){
+
+    //     }
+
+    // }
+
+
+
+    // else{
+    //     return alert("wrong input")
+    // }
+
+
+    // CHECK BOX FEATURES
     
     let technologies = [];
     
@@ -33,36 +98,24 @@ function addBlog(event) {
         technologies.push('<i class="fa-brands fa-java" id="java"></i>');
     }
     
-    let technologiesHTML = technologies.join();
+    let technologiesHTML = technologies.join('');
     
     console.log(technologiesHTML);
 
-  // WARNING INFORMATION IF VALUES ARE EMPTY
-
-    if (projectName == "") {
-        return alert("Input the value first");
-    } else if (startDate == "") {
-        return alert("Input the value first");
-    } else if (endDate == "") {
-        return alert("Input the value first");
-    } else if (description == "") {
-        return alert("Input the value first");
-    } else if (file == "") {
-        return alert("Input the value first");
-    }
-
   // TAKE THE VALUE OF IMAGES
-    file = URL.createObjectURL(file[0]);
+    let image = URL.createObjectURL(file[0]);
+    console.log(image);
 
-  // PUSH dataBlog to blog
+  // PUSH BLOG TO DATABLOG
     let blog = {
-        file,
+        image,
         projectName,
-        duration : "3 Bulan",
+        duration,
         description,
         technologiesHTML,
     };
     
+    console.log(blog);
     dataBlog.push(blog);
     
     renderBlog();
@@ -78,7 +131,7 @@ function renderBlog() {
     for (let i = 0; i < dataBlog.length; i++) {
         document.getElementById("content").innerHTML += 
         `<div class="container-card">
-                    <a href="detail-blog.html"><img src=${dataBlog[i].file}/></a>
+                    <a href="#"><img src= ${dataBlog[i].image} alt=""/></a>
                 <h3>Dumbways Mobile App - 2023</h3>
                 <span>Durasi : ${dataBlog[i].duration}</span>
                 <p>
@@ -91,6 +144,7 @@ function renderBlog() {
                     <button>Edit</button>
                     <button>Delete</button>
                 </div>
-                </div>`;
+        </div>`;
     }
 }
+
