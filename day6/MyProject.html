@@ -11,6 +11,9 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    #humburger-container{
+        display: none;
+    }
     </style>
 
 </head>
@@ -27,13 +30,17 @@
             <a href="Contact.html">Contact Me</a>
         </div>
         <div class="nav-right" id="hamburger-btn">
-            <button>
+            <button onclick="openHamburger()">
                 <i class="fa-solid fa-bars fa-2xl"></i>
             </button>
         </div>
     </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html" class="nav-active">My Project</a>
+        <a href="Contact.html">Contact Me</a>
+    </div>
 <!-- Navigation bar end-->
-
     <form class="Form-container" id="Form-Project" onsubmit="addBlog(event)">
         
         <!-- Title --> 
@@ -98,10 +105,11 @@
                 </div>
             </div>
         </div>
-        <button>Submit</button>
+        <div class="btn-input">
+            <button >Submit</button>
+        </div>
+        
     </form>
-
-
 
 
     <div class="card-result">
@@ -134,9 +142,62 @@
                 <button>Delete</button>
             </div>
             </div>
+            <div class="container-card">
+                <a href="#"><img src="Image/Orang.jpg"/></a>
+            <h3>Dumbways Mobile App - 2023</h3>
+            <span>Durasi : 3 bulan</span>
+            <div class="Post">
+                <p>Post : 10 july 2023 | 07:23</p>
+                <span>59 Second ago..</span>
+            </div>
+            <hr>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
+                Repellendus facere cupiditate similique nesciunt id quibusdam in
+                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
+                fugiat, fugit illo harum minima deleniti.
+            </p>
+            <div class="programming-language">
+                <i class="fa-brands fa-js" id="javascript"></i>
+                <i class="fa-brands fa-golang" id="golang"></i>
+                <i class="fa-brands fa-react" id="reactsJS"></i>
+                <i class="fa-brands fa-java" id="java"></i>
+            </div>
+            <div class="btn-group">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+            </div>
+            <div class="container-card">
+                <a href="#"><img src="Image/Orang.jpg"/></a>
+            <h3>Dumbways Mobile App - 2023</h3>
+            <span>Durasi : 3 bulan</span>
+            <div class="Post">
+                <p>Post : 10 july 2023 | 07:23</p>
+                <span>59 Second ago..</span>
+            </div>
+            <hr>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
+                Repellendus facere cupiditate similique nesciunt id quibusdam in
+                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
+                fugiat, fugit illo harum minima deleniti.
+            </p>
+            <div class="programming-language">
+                <i class="fa-brands fa-js" id="javascript"></i>
+                <i class="fa-brands fa-golang" id="golang"></i>
+                <i class="fa-brands fa-react" id="reactsJS"></i>
+                <i class="fa-brands fa-java" id="java"></i>
+            </div>
+            <div class="btn-group">
+                <button>Edit</button>
+                <button>Delete</button>
+            </div>
+            </div>
         </div>
     </div>
 
     <script src="js/blog.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 </html>

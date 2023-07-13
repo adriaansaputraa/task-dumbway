@@ -24,12 +24,16 @@
             <a href="#">Contact Me</a>
         </div>
         <div class="nav-right" id="hamburger-btn">
-            <button>
+            <button onclick="openHamburger()">
                 <i class="fa-solid fa-bars fa-2xl"></i>
             </button>
         </div>
     </nav>
-    
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Contact.html" class="nav-active">Contact Me</a>
+    </div>
     <div class="contact-container">
         <form class="form-container" id="myForm">
             <div>
@@ -74,5 +78,6 @@
         </form>
     </div>
     <script src="js/contact.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 </html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
     </style>
 </head>
 <body>
@@ -24,12 +24,16 @@
             <a href="Contact.html">Contact Me</a>
         </div>
         <div class="nav-right" id="hamburger-btn">
-            <button>
+            <button onclick="openHamburger()">
                 <i class="fa-solid fa-bars fa-2xl"></i>
             </button>
         </div>
     </nav>
-    
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html" class="nav-active">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Contact.html">Contact Me</a>
+    </div>
     <div class="card-welcome">
         <div class="card-text">
             <h2>Hi Welcome to my  hut</h2>
@@ -63,6 +67,6 @@
         </div>
         
     </div>
-    
+    <script src="js/hamburger.js"></script>
 </body>
 </html>
