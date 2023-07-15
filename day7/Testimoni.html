@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <title>Testimoni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        
+        
+        .card-result h1{
+            padding-top: 1em;
+            text-align: center;
+        }
+
+        #content-testimoni {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: center;
+        }
+
+        .container-card {
+            width: 25vw;
+            margin: 1em;
+            padding: 1em;
+            border-radius: 0.5em;
+            background-color: rgb(226, 226, 226);
+        }
+
+        .container-card img {
+            width: 100%;
+            border-radius: 0.5em;
+            height: 30vh;
+            object-fit: cover;
+        }
+        .container-card span{
+            color: rgb(96, 95, 95);
+        }
+
+        .container-card p {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        .Post p{
+            width: 50%;
+            font-size: small;
+        }
+        .Post{
+            display: flex;
+            align-items: center;
+        }
+
+        .Post span{
+            width: 50%;
+            text-align: end;
+            font-size: small;
+        }
+
+        .programming-language i {
+            font-size: 1.7em;
+            margin-right: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .btn-group {
+            display: flex;
+        }
+
+        .container-card .btn-group button {
+            width: 100%;
+            margin: 1em;
+            border-radius: 0.5em;
+            border: none;
+            padding: 0.5em;
+            background-color: black;
+            color: white;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Navigation bar start -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="Home.html">Home</a></li>
+            <li class="collapse-item"><a href="MyProject.html">My Project</a></li>
+            <li class="collapse-item"><a class="active" href="#">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="Contact.html">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Testimoni.html" class="nav-active">Testimoni</a>
+        <a href="Contact.html">Contact Me</a>
+    </div>
+<!-- Navigation bar end-->
+
+<div class="card-result">
+    <h1>Testimoni</h1>
+    <div id="content-testimoni">
+        <div class="container-card">
+            <a href="#"><img src="Image/Orang.jpg"/></a>
+        <h3>Dumbways Mobile App - 2023</h3>
+        <span>Durasi : 3 bulan</span>
+        <div class="Post">
+            <p>Post : 10 july 2023 | 07:23</p>
+            <span>59 Second ago..</span>
+        </div>
+        <hr>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
+            Repellendus facere cupiditate similique nesciunt id quibusdam in
+            totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
+            fugiat, fugit illo harum minima deleniti.
+        </p>
+        <div class="programming-language">
+            <i class="fa-brands fa-js" id="javascript"></i>
+            <i class="fa-brands fa-golang" id="golang"></i>
+            <i class="fa-brands fa-react" id="reactsJS"></i>
+            <i class="fa-brands fa-java" id="java"></i>
+        </div>
+        <div class="btn-group">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+        </div>
+    </div>
+    <script src="js/hamburger.js"></script>
+    <script src="Exercise/1.js"></script>
+</body>
+</html>

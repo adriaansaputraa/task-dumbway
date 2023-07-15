@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task 2</title>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/form-contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="Home.html">Home</a></li>
+            <li class="collapse-item"><a href="MyProject.html">My Project</a></li>
+            <li class="collapse-item"><a href="Testimoni.html">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="#">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Testimoni.html">Testimoni</a>
+        <a href="Contact.html" class="nav-active">Contact Me</a>
+    </div>
+    <div class="contact-container">
+        <form class="form-container" id="myForm">
+            <div>
+                <h2>GET IN TOUCH</h2>
+                <label>
+                    Name
+                </label>
+                <input id="input-name" autofocus/>
+            </div>
+            <div>
+                <label>
+                    Email
+                </label>
+                <input id="input-email" />
+            </div>
+            <div>
+                <label>
+                    Phone Number
+                </label>
+                <input id="input-phone"/>
+            </div>
+            <div class="custom-select">
+                <label>
+                    Subject
+                </label>
+                <select id="input-subject">
+                    <option value=""></option>
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Fullstack Developer">Fullstack Developer</option>
+                </select>
+            </div>
+            <div>
+                <label>
+                    Your message
+                </label>
+                <textarea id="input-message"></textarea>
+            </div>
+            <div class="btn-input">
+                <button type="submit" onclick="submitData(event)">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/contact.js"></script>
+    <script src="js/hamburger.js"></script>
+</body>
+</html>
