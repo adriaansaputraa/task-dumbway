@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/Testimoni.css">
+    <title>Testimoni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+
+</head>
+<body>
+    <!-- Navigation bar start -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="Home.html">Home</a></li>
+            <li class="collapse-item"><a href="MyProject.html">My Project</a></li>
+            <li class="collapse-item"><a class="active" href="#">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="Contact.html">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Testimoni.html" class="nav-active">Testimoni</a>
+        <a href="Contact.html">Contact Me</a>
+    </div>
+<!-- Navigation bar end-->
+
+    <div class="container">
+        <h1>My Testimonials</h1>
+        <div class="container-rating">
+            <h2>Rating by Star </h2>
+            <div class="rating">
+                <button class="rating-btn" onclick="allTestimonial()">
+                    All
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(1)">
+                    1 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(2)">
+                    2 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(3)">
+                    3 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(4)">
+                    4 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(5)">
+                    5 <i class="fa-solid fa-star"></i>
+                </button>
+            </div>
+        </div>
+        <section class="testimonials" id="testimonials">
+            <div class="testimonial">
+                
+            </div>
+        </section>
+    </div>
+
+
+    <script src="js/hamburger.js"></script>
+    <script src="js/Testimonial.js"></script>
+</body>
+</html>
