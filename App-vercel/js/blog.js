@@ -4,18 +4,22 @@ function addBlog(event) {
     event.preventDefault();
 
     let projectName = document.getElementById("input-projectname").value;
-    let startDate = new Date(document.getElementById("input-startdate").value);
-    let endDate = new Date(document.getElementById("input-endDate").value);
+    let startDate = document.getElementById("input-startdate").value;
+    let endDate = document.getElementById("input-endDate").value;
     let description = document.getElementById("input-descripton").value;
     let nodejs = document.getElementById("input-nodejs").checked;
     let golang = document.getElementById("input-golang").checked;
     let reactjs = document.getElementById("input-reactjs").checked;
     let javascript = document.getElementById("input-javascript").checked;
     let file = document.getElementById("input-image").files;
+    let getimage = document.getElementById("input-image").value;
 
     //DISTANCE DATE
 
-    let distance = endDate - startDate;
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+
+    let distance = end - start;
     let hourInDay = 86400000; // conver milisecond -> 1 day
     let dayInWeek = 7;
     let dayInMonth = 30;
@@ -30,6 +34,20 @@ function addBlog(event) {
     console.log(distanceInWeek)
     console.log(distanceInMonth)
     console.log(distanceInYear)
+
+    if(projectName == ""){
+        return alert ("Project Name must be entered!")
+    }else if(startDate == ""){
+        return alert ("Start Date must be entered!")
+    }else if(endDate == ""){
+        return alert ("End Date must be entered!")
+    }else if(description == ""){
+        return alert ("Description must be entered!")
+    }else if(getimage == ""){
+        return alert ("Needs upload image")
+    }
+
+
 
     duration = "";
 

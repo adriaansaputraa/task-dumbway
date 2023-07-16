@@ -120,6 +120,15 @@ nav ul li a.active{
     display: none;
 }
 
+@media only screen and (max-width: 790px){
+    nav ul li a{
+        text-decoration: none;
+        color: black;
+        font-size: smaller;
+    }
+    
+}
+
 @media only screen and (max-width: 640px){
     .collapse-item{
         display: none;
