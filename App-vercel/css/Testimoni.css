@@ -42,6 +42,28 @@
     width: 100%;
     }
 
+    .container-rating {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2em;
+    }
+
+    .container-rating h2{
+        font-size: medium;
+    }
+
+
+    .rating-btn {
+        margin: 20px;
+        padding: 0px 20px;
+        font-size: 0.8em;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
     @media only screen and (max-width: 900px) {
     .testimonial {
         width: 40%;
