@@ -1,6 +1,6 @@
 .card-welcome{
     display: flex;
-    height:500px;
+    height:80%;
     padding: 50px;
     width: 60%;
     margin: auto;
@@ -276,6 +276,7 @@
 
 .card-sosmed a:hover{
     color: orange;
+    background-color: black;
 }
 
 .card-image:hover{
