@@ -1,237 +1,41 @@
-nav ul img{
-    width: 55px;
-    height: 55px;
-    margin-top: 4px;
-    object-fit: contain;
-    
-}
-
-nav{
-    display: flex;
-    background-color: lightgray;
-    height: 70px;
-}
-
-nav ul{
-    display: flex;
-    gap: 20px;
-    height: 100%;
-    align-items: center;
-    background-color: lightgray;
-    width: 100%;
-}
-
-nav ul li{
-    list-style-type: none;
-    margin-right: 30px;
-}
-
-nav ul li a{
-    text-decoration: none;
-    color: black;
-    font-size: medium;
-}
-
-nav ul li a.active{
-    font-weight: bold;
-}
-
-.nav-right{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 60%;
-    margin-right: 40px;
-}
-
-.nav-right a{
-    background-color: black;
+.btn-contact{
     text-decoration: none;
     color: white;
-    padding: 7px;
-    border-radius: 10px;
+    background-color: black;
+    padding: 0.5em;
 }
 
-.card-home{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    height:500px;
-    padding: 10px;
-    width: 80%;
-    margin: auto;
-    margin-top: 50px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 5px;
-}
-
-.nav-right button{
-    width: 3em;
-    height: 3em;
-    background-color: lightgray;
-    border: none;
-    cursor: pointer;
-}
-
-.nav-right button :hover{
-    color: yellow;
-
-}
-
-
-.hamburger-container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    background-color: lightgray;
-    animation-name: slide-in;
-    animation-duration: 0.6s;
-}
-
-@keyframes slide-in {
-    0% {
-        transform: translateY(-5%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-.hamburger-container a{
-    padding-top: 0.5em;
+.btn-contact-card{
     text-decoration: none;
-    margin-bottom: 1em;
-    color: black;
-    font-weight: 550;
-    width: 18%;
+    color: white;
+    background-color: black;
+    padding: 0.6em 2em;
+}
+
+.nav-item a{
+    margin-left: 1.5em;
+}
+.nav-item a:hover{
+    color: orange !important;
+}
+
+.active{
+    font-weight: bold;
+    color: orange !important;
+}
+
+footer{
     text-align: center;
-}
-
-.hamburger-container a.nav-active {
-    background-color: black;
-    color: white;
-    padding: 0.2em;
-    border-radius: 0.4em;
-}
-
-#hamburger-container{
-    display: none;
-}
-
-@media only screen and (max-width: 790px){
-    nav ul li a{
-        text-decoration: none;
-        color: black;
-        font-size: smaller;
-    }
-    
-}
-
-@media only screen and (max-width: 640px){
-    .collapse-item{
-        display: none;
-    }
-
-    .card-home h1{
-        text-align: center;
-    }
-
-    nav ul img{
-        width: 55px;
-        height: 55px;
-        margin-top: 4px;
-        object-fit: contain;
-        margin-left: -1em;
-    }
-    
-}
-
-@media only screen and (max-width: 510px){
-    .collapse-item{
-        display: none;
-    }
-
-    .card-home h1{
-        text-align: center;
-    }
-
-    nav ul img{
-        width: 55px;
-        height: 55px;
-        margin-top: 4px;
-        object-fit: contain;
-        margin-left: -1em;
-    }
-
-    .hamburger-container a{
     font-size: medium;
-    }
-    
+    padding: 0.2em;
 }
 
-@media only screen and (max-width: 340px){
-    .collapse-item{
-        display: none;
-    }
-
-    .card-home h1{
-        text-align: center;
-    }
-
-    nav ul img{
-        width: 55px;
-        height: 55px;
-        margin-top: 4px;
-        object-fit: contain;
-        margin-left: -1em;
-    }
-
-    .hamburger-container a{
-    font-size: smaller;
-    }
-    
+.btn-contact:hover{
+    background-color: orange !important;
+    color: black !important;
 }
 
-@media only screen and (max-width: 310px){
-    .collapse-item{
-        display: none;
-    }
-
-    .card-home h1{
-        text-align: center;
-    }
-
-    nav ul img{
-        width: 55px;
-        height: 55px;
-        margin-top: 4px;
-        object-fit: contain;
-        margin-left: -1em;
-    }
-
-    .hamburger-container a{
-    font-size: 0.5em;
-    }
-    
-}
-
-
-@media only screen and (min-width: 641px) {
-    #hamburger-btn {
-        display: none;
-    }
-    .hamburger-container a{
-        display: none;
-    }
-}
-
-nav ul li a:hover{
-    font-weight: bold;
-}
-
-.nav-right a:hover{
-    background-color: orange;
-    padding: 9px;
+.btn-contact-card:hover{
+    background-color: orange !important;
+    color: black !important;
 }

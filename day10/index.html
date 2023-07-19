@@ -8,40 +8,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link rel="stylesheet" href="css/card-home.css">
         <link rel="stylesheet" href="fontawesome/css/all.css">
+        <link rel="stylesheet" href="css/all.css">
+        <link rel="stylesheet" href="css/nav.css">
 
         <style>
-            .btn-contact:hover{
-                background-color: orange !important;
-                color: black !important;
-            }
-            
-            .nav-item a{
-                margin-left: 1.5em;
-            }
-            .nav-item a:hover{
-                color: orange !important;
-            }
-
-            .active{
-                font-weight: bold;
-                color: orange !important;
-            }
-
-            footer{
-                text-align: center;
-                font-size: medium;
-                padding: 0.2em;
-            }
-
             .container-card{
                 height: 80%;
             }
-
-            html, body {
-                height: 100%;
-                margin: 0;
-            }
-
             .text-card{
                 text-align: justify !important;
             }
@@ -50,7 +23,7 @@
     <body>
         <nav class="navbar navbar-expand-lg bg-secondary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img src="Image/LogoYoutube.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,41 +32,43 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-6 active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link text-light fs-6 active" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-6" href="#">My Project</a>
+                        <a class="nav-link text-light fs-6" href="MyProject.html">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light fs-6" href="#">Testimonials</a>
+                        <a class="nav-link text-light fs-6" href="Testimoni.html">Testimonials</a>
                     </li>
                     </ul>
                     <form class="d-flex" role="search">
-                    <button class="btn bg-dark text-light btn-contact" type="submit">Contact Me</button>
+                        <a class="btn-contact rounded" href="Contact.html">Contact Me</a>
                     </form>
                 </div>
             </div>
         </nav>
         
         <div class="container-card">
-                <div class="card-welcome">
-                    <div class="container">
-                        <div class="row">
-                          <div class="col">
+            <div class="card-welcome">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
                             <h2>Hi Welcome to my  hut</h2>
-            <p class="text-card text-sm-start">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas accusamus veniam vel reprehenderit, necessitatibus dolorem, ad fugiat facere tempore eius eaque! Aliquam totam possimus optio corporis molestiae veritatis rem et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora cupiditate saepe quis! Nulla, ullam molestias ad unde, odio voluptas perspiciatis eius adipisci, optio eos debitis voluptate nihil quis numquam sunt? 
-            </p>
-            <button class="btn bg-dark text-light rounded-pill btn-contact" type="submit">Contact Me</button>
-                          </div>
-                          <div class="col-4 bg-success">
+                            <p class="text-card text-sm-start">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas accusamus veniam vel reprehenderit, necessitatibus dolorem, ad fugiat facere tempore eius eaque! Aliquam totam possimus optio corporis molestiae veritatis rem et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora cupiditate saepe quis! Nulla, ullam molestias ad unde, odio voluptas perspiciatis eius adipisci, optio eos debitis voluptate nihil quis numquam sunt? 
+                            </p>
+                            <a class="btn-contact-card rounded rounded-pill" href="Contact.html">Contact</a>
+                        </div>
+                        <div class="col-4 bg-success">
                             Column
-                          </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-        <footer class="bg-secondary text-light">© Introvert | All Right Reserved.</footer>
+        <footer class="bg-secondary text-light">
+            © Introvert | All Right Reserved.
+        </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
