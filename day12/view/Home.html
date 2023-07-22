@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
+    <link rel="icon" type="Images/x-icon" href="/Assets/Image/LogoYoutube.png">
+    <link rel="stylesheet" href="/Assets/css/all.css">
+    <link rel="stylesheet" href="/Assets/css/nav.css">
+    <link rel="stylesheet" href="/Assets/css/card-home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); 
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a class="active" href="home">Home</a></li>
+            <li class="collapse-item"><a href="myProject">My Project</a></li>
+            <li class="collapse-item"><a href="testimoni">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="contact">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="home" class="nav-active">Home</a>
+        <a href="myProject">My Project</a>
+        <a href="testimoni">Testimoni</a>
+        <a href="contact">Contact Me</a>
+    </div>
+    <div class="card-welcome">
+        <div class="card-text">
+            <h2>Hi Welcome to my  hut</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas accusamus veniam vel reprehenderit, necessitatibus dolorem, ad fugiat facere tempore eius eaque! Aliquam totam possimus optio corporis molestiae veritatis rem et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora cupiditate saepe quis! Nulla, ullam molestias ad unde, odio voluptas perspiciatis eius adipisci, optio eos debitis voluptate nihil quis numquam sunt? 
+            </p>
+            <div class="card-contact">
+                <a href="contact">
+                    Contact
+                </a>
+                <p>
+                    Download CV
+                </p>
+                <img src="/Assets/Image/Download.png" alt="">
+            </div>
+
+            <div class="card-container-sosmed">
+                <div class="card-sosmed">
+                    <a href="https://www.invisionapp.com/"><i class="fa-brands fa-invision fa-2xl"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-square-instagram fa-2xl"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook fa-2xl"></i></a>
+                    <a href="https://twitter.com/?lang=id"><i class="fa-brands fa-square-twitter fa-2xl"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-image">
+            <img src="/Assets/Image/picture.jpeg">
+            <h2>Adrian Saputra</h2>
+            <p>Fullstack developer</p>
+        </div>
+        
+    </div>
+    <script src="/Assets/js/hamburger.js"></script>
+</body>
+</html>

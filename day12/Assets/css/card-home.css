@@ -1,0 +1,283 @@
+.card-welcome{
+    display: flex;
+    height:500px;
+    padding: 50px;
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px;
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+    height:400px;
+    width: 60%;
+    padding: 2em;
+}
+
+.card-text p{
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.card-text div{
+    display: flex;
+    margin-top: 20px;
+    background-color: white;
+    align-items: center;
+}
+
+.card-contact a{
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 30px;
+}
+
+.card-sosmed a{
+    color: black;
+    margin-right: 30px;
+}
+
+.card-text div p{
+    margin-left: 20px;
+    margin-top: -0.5px;
+}
+
+.card-text div img{
+    width: 21px;
+    margin-left: 10px;
+}
+
+.card-image{
+    height: 480px;
+    width: 40%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 3px;
+    transition-duration: 0.2s;
+}
+
+.card-image img{
+    height: 400px; 
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+}
+
+.card-image h2{
+    text-align: center;
+}
+
+.card-image p{
+    text-align: center;
+    margin-top: -5px;
+}
+
+@media only screen and (max-width: 1000px){
+    .card-welcome{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        width: 60%;
+        margin-top: 50px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 5px;
+        padding: 1.5em;
+        align-items: center;
+    }
+
+    .card-text{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        width: 96%;
+        padding: 0.5em;
+    }
+
+    .card-image{
+        height: 500px;
+        width: 70%;
+        margin-top: 0.5em;
+        border-radius: 15px;
+        box-shadow: 0px 0px 3px;
+    }
+
+    .card-container-sosmed{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    
+    .card-sosmed{
+        align-items: center;
+        margin-left: 1.6em;
+    } 
+}
+
+@media only screen and (max-width: 725px){
+    
+    .card-text{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        width: 96%;
+        padding: 0.5em;
+    }
+
+    .card-image{
+        height: 450px;
+        width: 100%;
+        margin-top: 0.5em;
+        border-radius: 15px;
+        box-shadow: 0px 0px 3px;
+    }
+    
+    .card-text h2{
+        font-size: medium;
+    }
+
+    .card-text p{
+        font-size: small;
+    }
+    .card-contact a{
+        background-color: black;
+        text-decoration: none;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 30px;
+    }
+
+    .card-image h2{
+        font-size: medium;
+    }
+    
+    .card-image p{
+        font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    
+    .card-text{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        width: 96%;
+        padding: 0.5em;
+    }
+
+    .card-sosmed a i{
+        font-size: 1.7em
+        
+    }
+    
+    .card-text h2{
+        font-size: small;
+    }
+
+    .card-text p{
+        font-size: 0.5em;
+    }
+    .card-contact a{
+        background-color: black;
+        text-decoration: none;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 30px;
+    }
+
+    .card-image{
+        height: 450px;
+        width: 100%;
+        margin-top: 0.5em;
+        border-radius: 15px;
+        box-shadow: 0px 0px 3px;
+    }
+
+    .card-image h2{
+        font-size: medium;
+    }
+    
+    .card-image p{
+        font-size: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 361px){
+    
+    .card-text{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        width: 96%;
+        padding: 0.5em;
+    }
+    .card-text h2{
+        font-size: small;
+    }
+
+    .card-text p{
+        font-size: 0.6em;
+    }
+
+    .card-contact a{
+        background-color: black;
+        text-decoration: none;
+        color: white;
+        font-size: small;
+        padding: 5px 10px;
+        border-radius: 30px;
+    }
+
+    .card-contact p{
+        font-size: 0.4em;
+    }
+
+    .card-contact img{
+        height: 1em;
+    }
+
+    .card-sosmed a i{
+        font-size: 1.5em;
+    }
+
+    .card-sosmed a{
+        margin-top: -1.5em;
+    }
+
+
+
+    .card-image{
+        height: 450px;
+        width: 100%;
+        margin-top: 0.5em;
+        border-radius: 15px;
+        box-shadow: 0px 0px 3px;
+    }
+
+    .card-image h2{
+        font-size: medium;
+    }
+    
+    .card-image p{
+        font-size: 0.7em;
+    }
+
+}
+
+
+.card-contact a:hover{
+    background-color: orange;
+}
+
+.card-sosmed a:hover{
+    color: orange;
+}
+
+.card-image:hover{
+    transform: scale(1.1);
+}
