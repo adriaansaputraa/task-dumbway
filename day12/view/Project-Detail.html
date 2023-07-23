@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project-Detail</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
+        <link rel="icon" type="Images/x-icon" href="/Assets/Image/LogoYoutube.png">
+        <link rel="stylesheet" href="/Assets/css/all.css">
+        <link rel="stylesheet" href="/Assets/css/nav.css">
+        <link rel="stylesheet" href="/Assets/css/project-detail.css" />
+    </head>
+    <body>
+    <nav>
+        <ul>
+            <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="/">Home</a></li>
+            <li class="collapse-item"><a href="/myProject">My Project</a></li>
+            <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="/contact">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="/">Home</a>
+        <a href="/myProject" class="nav-active">My Project</a>
+        <a href="/testimoni">Testimoni</a>
+        <a href="/contact">Contact Me</a>
+    </div>
+
+    <div class="container-blog">
+        <h1>{{.Project.NameProject}}</h1>
+        <div class="header-blog">
+            <div class="left-blog">
+                <img src="/Assets/Image/Orang.jpg" alt="" />
+            </div>
+            <div class="right-blog">
+                <h2>Duration</h2>
+            <div class="icon-duration">
+            <p>
+                <i class="fa-regular fa-calendar-days"></i> {{.Project.StartDate}} - {{.Project.EndDate}}
+            </p>
+            <p><i class="fa-solid fa-clock"></i> 1 month</p>
+        </div>
+        
+        <h2>Tehcnologies</h2>
+        <div class="right-icon-blog">
+            <div>
+                {{if .Project.Nodejs}}
+                <p><i class="fa-brands fa-node-js"></i>Node JS</p>
+                {{end}}
+                {{if .Project.Golang}}
+                <p><i class="fa-brands fa-golang"></i>Golang</p>
+                {{end}}
+            </div>
+            <div>
+                {{if .Project.ReactJs}}
+                <p><i class="fa-brands fa-react"></i>React JS</p>
+                {{end}}
+                {{if .Project.JavaScript}}
+                <p><i class="fa-brands fa-js"></i>Java Script</p>
+                {{end}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="paragraf-blog"><p>{{.Project.Description}}</p>
+      </div>
+    </div>
+  </body>
+</html>

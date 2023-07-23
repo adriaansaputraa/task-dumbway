@@ -50,9 +50,10 @@
             <a href="/form-project">Add Project</a>
         </div>
         <div id="content">
+            {{ range $index, $value := .Projects}}
             <div class="container-card">
-                <a href="#"><img src="/Assets/Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
+                <a href="/project-detail/{{$index}}"><img src="/Assets/Image/Orang.jpg"/></a>
+            <h3>{{$value.NameProject}}</h3>
             <span>Durasi : 3 bulan</span>
             <div class="Post">
                 <p>Post : 10 july 2023 | 07:23</p>
@@ -60,74 +61,32 @@
             </div>
             <hr>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
+                {{$value.Description}}
             </p>
             <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
+                {{if $value.Nodejs}}
+                <i class="fa-brands fa-node-js"></i>
+                {{end}}
+                {{if $value.Golang}}
+                <i class="fa-brands fa-golang"></i>
+                {{end}}
+                {{if $value.ReactJs}}
+                <i class="fa-brands fa-react"></i>
+                {{end}}
+                {{ if $value.JavaScript}}
+                <i class="fa-brands fa-js"></i>
+                {{end}}
             </div>
             <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
+                <form action="/delete-project/{{$index}}" method="POST">
+                    <button>Edit</button>
+                </form>
+                <form action="/delete-project/{{$index}}" method="POST">
+                    <button>Delete</button>
+                </form>
             </div>
             </div>
-            <div class="container-card">
-                <a href="#"><img src="/Assets/Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
-            <span>Durasi : 3 bulan</span>
-            <div class="Post">
-                <p>Post : 10 july 2023 | 07:23</p>
-                <span>59 Second ago..</span>
-            </div>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
-            </p>
-            <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
-            </div>
-            <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            </div>
-            <div class="container-card">
-                <a href="#"><img src="/Assets/Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
-            <span>Durasi : 3 bulan</span>
-            <div class="Post">
-                <p>Post : 10 july 2023 | 07:23</p>
-                <span>59 Second ago..</span>
-            </div>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
-            </p>
-            <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
-            </div>
-            <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            </div>
+            {{end}}
         </div>
     </div>
 

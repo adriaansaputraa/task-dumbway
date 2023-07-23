@@ -224,8 +224,14 @@ input{
     display: flex;
 }
 
-.container-card .btn-group button {
+.btn-group form{
     width: 100%;
+    background-color: red;
+    align-items: center;
+}
+
+.container-card .btn-group form button {
+    width: 89%;
     margin: 1em;
     border-radius: 0.5em;
     border: none;
