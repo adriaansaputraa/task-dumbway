@@ -144,13 +144,29 @@ input{
 }
 
 .card-result {
-    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
     background-color: white;
+    align-items: center;
 }
 
 .card-result h1{
     padding-top: 1em;
     text-align: center;
+}
+
+.GoToMyProject{
+    width: 86%;
+    height: 2em;
+    text-align: end;
+}
+
+.GoToMyProject a{
+    text-decoration: none;
+    background-color: black;
+    padding: 0.5em;
+    color: white;
+    border-radius: 0.5em;
 }
 
 #content {

@@ -13,13 +13,15 @@ func main() {
 
 	e.Static("/Assets", "Assets")
 
-	e.GET("/home", home)
+	e.GET("/", handlers.home)
 
 	e.GET("/contact", contact)
 
 	e.GET("/index", index)
 
 	e.GET("/myProject", myProject)
+
+	e.GET("/form-project", formProject)
 
 	e.GET("/testimoni", testimonial)
 
@@ -29,15 +31,6 @@ func main() {
 }
 
 // handle
-
-func home(c echo.Context) error {
-	tmpl, err := template.ParseFiles("view/Home.html")
-
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, err.Error())
-	}
-	return tmpl.Execute(c.Response(), nil) //execute = respons apa yang mau dipanggil
-}
 
 func contact(c echo.Context) error {
 	tmpl, err := template.ParseFiles("view/Contact.html")
@@ -59,6 +52,15 @@ func index(c echo.Context) error {
 
 func myProject(c echo.Context) error {
 	tmpl, err := template.ParseFiles("view/MyProject.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+	return tmpl.Execute(c.Response(), nil) //execute = respons apa yang mau dipanggil
+}
+
+func formProject(c echo.Context) error {
+	tmpl, err := template.ParseFiles("view/Form-MyProject.html")
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
