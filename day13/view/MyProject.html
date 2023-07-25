@@ -22,13 +22,13 @@
 <!-- Navigation bar start -->
     <nav>
         <ul>
-            <li><a href="index.html"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
-            <li class="collapse-item"><a href="Home.html">Home</a></li>
-            <li class="collapse-item"><a class="active" href="#">My Project</a></li>
-            <li class="collapse-item"><a href="Testimoni.html">Testimoni</a></li>
+            <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="/">Home</a></li>
+            <li class="collapse-item"><a class="active" href="/myProject">My Project</a></li>
+            <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
         </ul>
         <div class="nav-right collapse-item">
-            <a href="Contact.html">Contact Me</a>
+            <a href="/contact">Contact Me</a>
         </div>
         <div class="nav-right" id="hamburger-btn">
             <button onclick="openHamburger()">
@@ -37,90 +37,23 @@
         </div>
     </nav>
     <div class="hamburger-container" id="hamburger-container">
-        <a href="Home.html">Home</a>
-        <a href="MyProject.html" class="nav-active">My Project</a>
-        <a href="Testimoni.html">Testimoni</a>
-        <a href="Contact.html">Contact Me</a>
+        <a href="/">Home</a>
+        <a href="/myProject" class="nav-active">My Project</a>
+        <a href="/testimoni">Testimoni</a>
+        <a href="/contact">Contact Me</a>
     </div>
 <!-- Navigation bar end-->
-    <form class="Form-container" id="Form-Project" onsubmit="addBlog(event)">
-        
-        <!-- Title --> 
-        <div class="container">
-            <h1>ADD MY PROJECT</h1>
-            <div class="Project-name">
-                <label>Project Name</label>
-                <input id="input-projectname" type="text">
-            </div>
-            
-            <!-- Date --> 
-            <div class="Date-container">
-                <div>
-                    <label>Start Date</label>
-                    <input type="date" id="input-startdate">
-                </div>
-                <div>
-                    <label>End Date</label>
-                    <input id="input-endDate" type="date">
-                </div>
-            </div>
-            
-            <!-- Description --> 
-            <div class="Descripton-container">
-                <label>Descripton</label>
-                <textarea id="input-descripton"></textarea>
-            </div>
-            
-
-            <!-- Checkbox --> 
-            <div class="checkbox">
-                <label>Technologies</label>
-                <div class="checkbox-group">
-                    <div>
-                        <input type="checkbox" id="input-nodejs" class="multi-input" />
-                        <label>Node JS</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="input-golang" class="multi-input" />
-                        <label>Golang</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="input-reactjs" class="multi-input" />
-                        <label>React JS</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="input-javascript" class="multi-input"/>
-                        <label>Javascript</label>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Upload Image --> 
-            <div class="Upload-Image">
-                <label>Upload Image</label>
-                <div class="label-image">
-                    <label for="input-image">
-                        <p>Choose</p>
-                        <i class="fa-solid fa-paperclip fa-fw"></i>
-                        <input type="file" id="input-image" hidden />
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="btn-input">
-            <button >Submit</button>
-        </div>
-        
-    </form>
-
 
     <div class="card-result">
-        <hr>
         <h1>MY PROJECT</h1>
+        <div class ="GoToMyProject">
+            <a href="/form-project">Add Project</a>
+        </div>
         <div id="content">
+            {{ range $index, $value := .Projects}}
             <div class="container-card">
-                <a href="#"><img src="Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
+                <a href="/project-detail/{{$index}}"><img src="/Assets/Image/Orang.jpg"/></a>
+            <h3>{{$value.NameProject}}</h3>
             <span>Durasi : 3 bulan</span>
             <div class="Post">
                 <p>Post : 10 july 2023 | 07:23</p>
@@ -128,78 +61,35 @@
             </div>
             <hr>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
+                {{$value.Description}}
             </p>
             <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
+                {{if $value.Nodejs}}
+                <i class="fa-brands fa-node-js"></i>
+                {{end}}
+                {{if $value.Golang}}
+                <i class="fa-brands fa-golang"></i>
+                {{end}}
+                {{if $value.ReactJs}}
+                <i class="fa-brands fa-react"></i>
+                {{end}}
+                {{ if $value.JavaScript}}
+                <i class="fa-brands fa-js"></i>
+                {{end}}
             </div>
             <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
+                <form action="/delete-project/{{$index}}" method="POST">
+                    <button>Edit</button>
+                </form>
+                <form action="/delete-project/{{$index}}" method="POST">
+                    <button>Delete</button>
+                </form>
             </div>
             </div>
-            <div class="container-card">
-                <a href="#"><img src="Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
-            <span>Durasi : 3 bulan</span>
-            <div class="Post">
-                <p>Post : 10 july 2023 | 07:23</p>
-                <span>59 Second ago..</span>
-            </div>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
-            </p>
-            <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
-            </div>
-            <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            </div>
-            <div class="container-card">
-                <a href="#"><img src="Image/Orang.jpg"/></a>
-            <h3>Dumbways Mobile App - 2023</h3>
-            <span>Durasi : 3 bulan</span>
-            <div class="Post">
-                <p>Post : 10 july 2023 | 07:23</p>
-                <span>59 Second ago..</span>
-            </div>
-            <hr>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.   
-                Repellendus facere cupiditate similique nesciunt id quibusdam in
-                totam deleniti, asperiores, animi delectus nobis nisi? Sapiente
-                fugiat, fugit illo harum minima deleniti.
-            </p>
-            <div class="programming-language">
-                <i class="fa-brands fa-js" id="javascript"></i>
-                <i class="fa-brands fa-golang" id="golang"></i>
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                <i class="fa-brands fa-java" id="java"></i>
-            </div>
-            <div class="btn-group">
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-            </div>
+            {{end}}
         </div>
     </div>
 
-    <script src="/Assets/js/blog.js"></script>
     <script src="/Assets/js/hamburger.js"></script>
 </body>
 </html>

@@ -144,13 +144,29 @@ input{
 }
 
 .card-result {
-    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
     background-color: white;
+    align-items: center;
 }
 
 .card-result h1{
     padding-top: 1em;
     text-align: center;
+}
+
+.GoToMyProject{
+    width: 86%;
+    height: 2em;
+    text-align: end;
+}
+
+.GoToMyProject a{
+    text-decoration: none;
+    background-color: black;
+    padding: 0.5em;
+    color: white;
+    border-radius: 0.5em;
 }
 
 #content {
@@ -208,8 +224,13 @@ input{
     display: flex;
 }
 
-.container-card .btn-group button {
+.btn-group form{
     width: 100%;
+    align-items: center;
+}
+
+.container-card .btn-group form button {
+    width: 89%;
     margin: 1em;
     border-radius: 0.5em;
     border: none;
