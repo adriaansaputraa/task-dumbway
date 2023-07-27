@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Project</title>
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
+    <link rel="icon" type="Images/x-icon" href="/Assets/Image/LogoYoutube.png">
+    <link rel="stylesheet" href="/Assets/css/all.css">
+    <link rel="stylesheet" href="/Assets/css/nav.css">
+    <link rel="stylesheet" href="/Assets/css/MyProject.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    #humburger-container{
+        display: none;
+    }
+    </style>
+
+</head>
+<body>
+
+<!-- Navigation bar start -->
+    <nav>
+        <ul>
+            <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="/">Home</a></li>
+            <li class="collapse-item"><a href="/myProject">My Project</a></li>
+            <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            <a href="/contact">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="/">Home</a>
+        <a href="/myProject" class="nav-active">My Project</a>
+        <a href="/testimoni">Testimoni</a>
+        <a href="/contact">Contact Me</a>
+    </div>
+<!-- Navigation bar end-->
+    <form class="Form-container" action="/edit-project/{{.Id}}" method="POST">
+        
+        <!-- Title --> 
+        <div class="container">
+            <h1>EDIT MY PROJECT</h1>
+            <div class="Project-name">
+                <label>Project Name</label>
+                <input name="input-projectname" type="text" value="{{.Project.NameProject}}" required>
+            </div>
+            
+            <!-- Date --> 
+            <div class="Date-container">
+                <div>
+                    <label>Start Date</label>
+                    <input type="date" name="input-startdate" value="{{.Project.StartDate}}" required>
+                </div>
+                <div>
+                    <label>End Date</label>
+                    <input name="input-endDate" type="date" value="{{.Project.EndDate}}"  required>
+                </div>
+            </div>
+            
+            <!-- Description --> 
+            <div class="Descripton-container">
+                <label>Descripton</label>
+                <textarea name="input-descripton">{{.Project.Description}}</textarea>
+            </div>
+            
+
+            <!-- Checkbox --> 
+            <div class="checkbox">
+                <label>Technologies</label>
+                <div class="checkbox-group">
+                    <div>
+                        <input type="checkbox" name="input-nodejs" class="multi-input" />
+                        <label>Node JS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="input-golang" class="multi-input" />
+                        <label>Golang</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="input-reactjs" class="multi-input" />
+                        <label>React JS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="input-javascript" class="multi-input"/>
+                        <label>Javascript</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upload Image --> 
+            <div class="Upload-Image">
+                <label>Upload Image</label>
+                <div class="label-image">
+                    <label for="input-image">
+                        <p>Choose</p>
+                        <i class="fa-solid fa-paperclip fa-fw"></i>
+                        <input type="file" id="input-image" hidden />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="btn-input">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script src="/Assets/js/blog.js"></script>
+    <script src="/Assets/js/hamburger.js"></script>
+</body>
+</html>

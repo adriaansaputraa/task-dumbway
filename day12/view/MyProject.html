@@ -54,10 +54,9 @@
             <div class="container-card">
                 <a href="/project-detail/{{$index}}"><img src="/Assets/Image/Orang.jpg"/></a>
             <h3>{{$value.NameProject}}</h3>
-            <span>Durasi : 3 bulan</span>
+            <span>Durasi : {{$value.Duration}}</span>
             <div class="Post">
-                <p>Post : 10 july 2023 | 07:23</p>
-                <span>59 Second ago..</span>
+                <p>Post : {{$value.PostDate}} | {{$value.TimePost}}</p>
             </div>
             <hr>
             <p>
@@ -78,7 +77,7 @@
                 {{end}}
             </div>
             <div class="btn-group">
-                <form action="/delete-project/{{$index}}" method="POST">
+                <form action="/edit-project/{{$index}}" method="get">
                     <button>Edit</button>
                 </form>
                 <form action="/delete-project/{{$index}}" method="POST">
