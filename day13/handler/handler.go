@@ -1,8 +1,10 @@
 package handler
 
 import (
+	"context"
 	"html/template"
 	"net/http"
+	connection "personal-web/Connection"
 	"strconv"
 	"time"
 
@@ -12,12 +14,13 @@ import (
 type Project struct {
 	Id           int
 	Project_Name string
-	Start_Date   string
-	End_Date     string
+	Start_Date   time.Time
+	End_Date     time.Time
 	Duration     string
 	Description  string
 	Post_Date    string
 	Time_Post    string
+	Technologies []string
 	Node_js      bool
 	Golang       bool
 	React_Js     bool
@@ -25,47 +28,7 @@ type Project struct {
 	Image        string
 }
 
-var data_Projects = []Project{
-	{
-		Project_Name: "Project pertama",
-		Start_Date:   "23-07-2023",
-		End_Date:     "25-08-2023",
-		Duration:     Count_Duration("23-07-2023", "25-08-2023"),
-		Description:  "This is the description of project 1",
-		Post_Date:    time.Now().Format("02-01-2006"),
-		Time_Post:    time.Now().Format("15:04"),
-		Node_js:      true,
-		Golang:       true,
-		React_Js:     false,
-		Java_Script:  true,
-	},
-	{
-		Project_Name: "Project kedua",
-		Start_Date:   "23-07-2023",
-		End_Date:     "03-08-2023",
-		Duration:     Count_Duration("23-07-2023", "03-08-2023"),
-		Description:  "This is the description of project 2",
-		Post_Date:    time.Now().Format("02-01-2006"),
-		Time_Post:    time.Now().Format("15:04"),
-		Node_js:      false,
-		Golang:       true,
-		React_Js:     true,
-		Java_Script:  true,
-	},
-	{
-		Project_Name: "Project ketiga",
-		Start_Date:   "23-07-2023",
-		End_Date:     "25-07-2023",
-		Duration:     Count_Duration("23-07-2023", "25-07-2023"),
-		Description:  "This is the description of project 3",
-		Post_Date:    time.Now().Format("02-01-2006"),
-		Time_Post:    time.Now().Format("15:04"),
-		Node_js:      true,
-		Golang:       true,
-		React_Js:     false,
-		Java_Script:  true,
-	},
-}
+var data_Projects = []Project{}
 
 // ------------------------------------------------------------------------HOME--------------------------------------------------------//
 func Home(c echo.Context) error {
@@ -109,28 +72,45 @@ func Add_Project(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	// dataQuery, errQuery := connection.Conn.Query(context.Background(), "SELECT name, description FROM tb_projects")
+	dataQuery, errQuery := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, technologies, image FROM tb_projects")
 
-	// if errQuery != nil {
-	// 	return c.JSON(http.StatusInternalServerError, err.Error())
-	// }
+	if errQuery != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
 
-	// var resultProject []Project
+	var resultProject []Project
 
-	// for dataQuery.Next() {
+	for dataQuery.Next() {
 
-	// 	var each = Project{}
+		var each = Project{}
 
-	// 	err := dataQuery.Scan(&each.Project_Name, &each.Description)
-	// 	if err != nil {
-	// 		return c.JSON(http.StatusInternalServerError, err.Error())
-	// 	}
+		err := dataQuery.Scan(&each.Id, &each.Project_Name, &each.Start_Date, &each.End_Date, &each.Description, &each.Technologies, &each.Image)
+		if err != nil {
+			return c.JSON(http.StatusInternalServerError, err.Error())
+		}
 
-	// 	resultProject = append(resultProject, each)
-	// }
+		each.Duration = Count_Duration(each.Start_Date, each.End_Date)
+		if checkValue(each.Technologies, "nodejs") {
+			each.Node_js = true
+		}
+		if checkValue(each.Technologies, "golang") {
+			each.Golang = true
+		}
+		if checkValue(each.Technologies, "reactjs") {
+			each.React_Js = true
+		}
+		if checkValue(each.Technologies, "javascript") {
+			each.Java_Script = true
+		}
+
+		each.Post_Date = time.Now().Format("02-01-2006")
+		each.Time_Post = time.Now().Format("15:04")
+
+		resultProject = append(resultProject, each)
+	}
 
 	data := map[string]interface{}{
-		"Projects": data_Projects,
+		"Projects": resultProject,
 	}
 	return tmpl.Execute(c.Response(), data)
 }
@@ -151,19 +131,17 @@ func Post_Project(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	new_Start_Date := start_Date.Format("02-01-2006")
 
 	end_Date, err := time.Parse("2006-01-02", add_End_Date)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	new_End_Date := end_Date.Format("02-01-2006")
 
 	var new_Project = Project{
 		Project_Name: add_Project_Name,
-		Start_Date:   new_Start_Date,
-		End_Date:     new_End_Date,
-		Duration:     Count_Duration(new_Start_Date, new_End_Date),
+		Start_Date:   start_Date,
+		End_Date:     end_Date,
+		Duration:     Count_Duration(start_Date, end_Date),
 		Description:  add_Description,
 		Post_Date:    time.Now().Format("02-01-2006"),
 		Time_Post:    time.Now().Format("15:04"),
@@ -253,11 +231,9 @@ func Delete_Project(c echo.Context) error {
 
 //-----------------------------------------------------COUNT DURATION----------------------------------------------------//
 
-func Count_Duration(d1, d2 string) string {
-	date_1, _ := time.Parse("02-01-2006", d1)
-	date_2, _ := time.Parse("02-01-2006", d2)
+func Count_Duration(d1, d2 time.Time) string {
 
-	diff := date_2.Sub(date_1)
+	diff := d2.Sub(d1)
 	days := int(diff.Hours() / 24)
 	weeks := days / 7
 	months := days / 30
@@ -294,19 +270,17 @@ func Post_Edit_Project(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	new_Start_Date := start_Date.Format("02-01-2006")
 
 	end_Date, err := time.Parse("2006-01-02", add_End_Date)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	new_End_Date := end_Date.Format("02-01-2006")
 
 	var edit_Project = Project{
 		Project_Name: add_Project_Name,
-		Start_Date:   new_Start_Date,
-		End_Date:     new_End_Date,
-		Duration:     Count_Duration(new_Start_Date, new_End_Date),
+		Start_Date:   start_Date,
+		End_Date:     end_Date,
+		Duration:     Count_Duration(start_Date, end_Date),
 		Description:  add_Description,
 		Post_Date:    time.Now().Format("02-01-2006"),
 		Time_Post:    time.Now().Format("15:04"),
@@ -357,4 +331,15 @@ func Get_Edit_Project(c echo.Context) error {
 		"Project": ProjectDetail,
 	}
 	return tmpl.Execute(c.Response(), data)
+}
+
+//-----------------------------------------------------LIST TECHNOLOGIS------------------------------------------------------//
+
+func checkValue(list []string, object string) bool {
+	for _, data := range list {
+		if data == object {
+			return true
+		}
+	}
+	return false
 }
