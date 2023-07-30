@@ -1,0 +1,14 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+.flashMessage{
+    text-align: center;
+    margin-top: 1em;
+    color: red;
+}

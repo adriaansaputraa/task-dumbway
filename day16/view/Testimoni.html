@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="Images/x-icon" href="/Assets/Image/LogoYoutube.png">
+    <link rel="stylesheet" href="/Assets/css/all.css">
+    <link rel="stylesheet" href="/Assets/css/nav.css">
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/Assets/css/Testimoni.css">
+    <title>Testimoni</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+
+</head>
+<body>
+    <!-- Navigation bar start -->
+    <nav>
+        <ul>
+            <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="/">Home</a></li>
+            {{if .UserLoginSession.IsLogin}}
+            <li class="collapse-item"><a href="/add-Project">Add Project</a></li>
+            {{end}}
+            <li class="collapse-item"><a href="/testimoni" class="active">Testimoni</a></li>
+        </ul>
+        <div class="nav-right collapse-item">
+            {{if .UserLoginSession.IsLogin}}
+            <form method="POST" action="/logout">
+            <button>Logout</button>
+            </form>
+            {{else}}
+            <a class="rgl" href="/form-register">Register</a>
+            <a class="rgl" href="/form-login">Login</a>
+            <a class="Contact" href="/contact">Contact Me</a>
+            {{end}}
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="/">Home</a>
+        <a href="/add-Project">Add Project</a>
+        <a href="/testimoni" class="nav-active">Testimoni</a>
+        <a href="/contact">Contact Me</a>
+    </div>
+<!-- Navigation bar end-->
+
+    <div class="container">
+        <h1>My Testimonials</h1>
+        <div class="container-rating">
+            <h2>Rating by Star </h2>
+            <div class="rating">
+                <button class="rating-btn" onclick="allTestimonial()">
+                    All
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(1)">
+                    1 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(2)">
+                    2 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(3)">
+                    3 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(4)">
+                    4 <i class="fa-solid fa-star"></i>
+                </button>
+                <button class="rating-btn" onclick="filterTestimonial(5)">
+                    5 <i class="fa-solid fa-star"></i>
+                </button>
+            </div>
+        </div>
+        <section class="testimonials" id="testimonials">
+            <div class="testimonial">
+                
+            </div>
+        </section>
+    </div>
+
+
+    <script src="/Assets/js/hamburger.js"></script>
+    <script src="/Assets/js/Ajax.js"></script>
+</body>
+</html>
