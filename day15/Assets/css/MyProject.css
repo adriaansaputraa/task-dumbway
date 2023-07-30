@@ -1,0 +1,443 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(229, 229, 229);
+}
+
+label{
+    font-size:large;
+    font-weight: bold;
+}
+
+input{
+    background-color: white;
+    padding: 0.8em;
+    border-radius: 0.4em;
+    border: none;
+    box-shadow: 0px 1.5px 2px;
+    margin-top: 0.5em;
+}
+
+.Form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.container{
+    width: 35%;
+    height: 80%;
+}
+
+
+.container h1{
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+}
+
+.Project-name{
+    display: flex;
+    flex-direction: column;
+}
+
+.Date-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.Date-container div{
+    display: flex;
+    width: 48%;
+    flex-direction: column;
+}
+
+.Descripton-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+
+.Descripton-container textarea{
+    border-radius: 0.4em;
+    resize: none;
+    border: none;
+    box-shadow: 0px 1.5px 2px;
+    height: 200px;
+    padding: 1em;
+}
+
+.checkbox{
+    margin-top: 1em;
+
+}
+
+.checkbox-group {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.checkbox-group div{
+    display: flex;
+} 
+
+.checkbox-group div label{
+    margin-top: 3px;
+    color: rgb(62, 62, 62);
+}
+
+.checkbox-group div input{
+    width: 20px;
+    height: 20px;
+    margin-right: 1em;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.Upload-Image{
+    margin-top: 1em;
+}
+
+.label-image label {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.2em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.label-image label p {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(209, 209, 209);
+    color: rgb(158, 158, 158);
+}
+
+.label-image label i {
+    font-size: 20px;
+    margin-right: 8px;
+}
+.btn-input{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.Form-container button{
+    margin-top: 2em;
+    background-color: black;
+    color: white;
+    width: 9em;
+    cursor: pointer;
+    padding: 0.7em;
+    border-radius: 2em;
+    border: none;
+    margin-left: 22%;
+}
+
+.Form-container button:hover{
+    background-color: orange;
+}
+
+.card-result {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+}
+
+.card-result h1{
+    padding-top: 1em;
+    text-align: center;
+}
+
+.GoToMyProject{
+    width: 86%;
+    height: 2em;
+    text-align: end;
+}
+
+.GoToMyProject a{
+    text-decoration: none;
+    background-color: black;
+    padding: 0.5em;
+    color: white;
+    border-radius: 0.5em;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+.container-card {
+    width: 25vw;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: rgb(226, 226, 226);
+}
+
+.container-card img {
+    width: 100%;
+    border-radius: 0.5em;
+    height: 30vh;
+    object-fit: cover;
+}
+.container-card span{
+    color: rgb(96, 95, 95);
+}
+
+.container-card p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+.Post p{
+    width: 50%;
+    font-size: small;
+}
+.Post{
+    display: flex;
+    align-items: center;
+}
+
+.Post span{
+    width: 50%;
+    text-align: end;
+    font-size: small;
+}
+
+.programming-language i {
+    font-size: 1.7em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.btn-group form{
+    width: 100%;
+    align-items: center;
+}
+
+.container-card .btn-group form button {
+    width: 89%;
+    margin: 1em;
+    border-radius: 0.5em;
+    border: none;
+    padding: 0.5em;
+    background-color: black;
+    color: white;
+}
+
+@media only screen and (max-width: 1000px){
+    .container{
+        width: 45%;
+        height: 80%;
+    }
+    
+}
+
+@media only screen and (max-width: 890px){
+    .container{
+        width: 60%;
+        height: 80%;
+    }
+
+    .container-card h3{
+        font-size: medium;
+    }
+    
+}
+
+@media only screen and (max-width: 655px){
+    .container{
+        width: 80%;
+        height: 80%;
+    }
+
+    .container h1{
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: larger;
+    }
+    
+    label{
+        font-size:small;
+        font-weight: bold;
+    }
+
+    input{
+        background-color: white;
+        padding: 0.4em;
+        border-radius: 0.4em;
+        border: none;
+        box-shadow: 0px 1.5px 2px;
+        margin-top: 0.5em;
+    }
+
+    #content {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+    }
+    .container-card {
+        width: 39vw;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 0.5em;
+    }
+
+    .container-card h3{
+        font-size: medium;
+    }
+
+    .container-card span{
+        font-size: small;
+    }
+    
+    .container-card p{
+        font-size: small;
+    }
+
+    .Post p{
+        width: 50%;
+        font-size: 0.7em;
+    }
+
+    .programming-language i{
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 430px){
+    .container{
+        width: 90%;
+        height: 80%;
+    }
+
+    .container h1{
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: larger;
+    }
+    
+    label{
+        font-size:small;
+        font-weight: bold;
+    }
+
+    input{
+        background-color: white;
+        padding: 0.4em;
+        border-radius: 0.4em;
+        border: none;
+        box-shadow: 0px 1.5px 2px;
+        margin-top: 0.5em;
+    }
+
+    .container-card {
+        width: 36vw;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 0.5em;
+    }
+
+    .btn-group{
+        width: 100%;
+        border-radius: 0.5em;
+        border: none;
+    }
+
+    .container-card .btn-group button {
+        border-radius: 0.5em;
+        border: none;
+        font-size: 0.4em;
+        background-color: black;
+        color: white;
+    }
+
+    .programming-language i{
+        font-size: 1em;
+    }
+
+    
+}
+
+@media only screen and (max-width: 301px){
+
+    .container h1{
+        text-align: center;
+        margin-bottom: 1em;
+        font-size: larger;
+    }
+
+    label{
+        font-size:small;
+        font-weight: bold;
+    }
+
+    .container-card {
+        width: 30vw;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 0.5em;
+    }
+
+    .btn-group{
+        width: 100%;
+        border-radius: 0.5em;
+        border: none;
+    }
+
+    .container-card .btn-group button {
+        border-radius: 0.5em;
+        border: none;
+        font-size: 0.4em;
+        background-color: black;
+        color: white;
+    }
+
+    .programming-language i{
+        font-size: 0.8em;
+    }
+    .container-card h3{
+        font-size: 0.7em;
+    }
+
+    .container-card span{
+        font-size: 0.5em;
+    }
+    
+    .container-card p{
+        font-size: 0.2em;
+    }
+
+    .Post p{
+        width: 60%;
+        font-size: 0.1em;
+    }
+    
+    .Post span{
+        font-size: 0.1em;
+    }
+
+    
+}
+
+.btn-group button:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+
+
