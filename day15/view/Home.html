@@ -18,11 +18,21 @@
         <ul>
             <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
             <li class="collapse-item"><a class="active" href="/">Home</a></li>
+            {{if .UserLoginSession.IsLogin}}
             <li class="collapse-item"><a href="/add-Project">Add Project</a></li>
+            {{end}}
             <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
         </ul>
         <div class="nav-right collapse-item">
-            <a href="/contact">Contact Me</a>
+            {{if .UserLoginSession.IsLogin}}
+            <form method="POST" action="/logout">
+            <button>Logout</button>
+            </form>
+            {{else}}
+            <a class="rgl" href="/form-register">Register</a>
+            <a class="rgl" href="/form-login">Login</a>
+            <a class="Contact" href="/contact">Contact Me</a>
+            {{end}}
         </div>
         <div class="nav-right" id="hamburger-btn">
             <button onclick="openHamburger()">
@@ -37,7 +47,13 @@
         <a href="/contact">Contact Me</a>
     </div>
     <div class="card-welcome">
+        
+        
+        
         <div class="card-text">
+            {{if .FlashMessage}}
+            <p class="flashMessage">{{.FlashMessage}}</p>
+            {{end}}
             <h2>Hi Welcome to my  hut</h2>
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas accusamus veniam vel reprehenderit, necessitatibus dolorem, ad fugiat facere tempore eius eaque! Aliquam totam possimus optio corporis molestiae veritatis rem et. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora cupiditate saepe quis! Nulla, ullam molestias ad unde, odio voluptas perspiciatis eius adipisci, optio eos debitis voluptate nihil quis numquam sunt? 
@@ -64,8 +80,13 @@
         </div>
         <div class="card-image">
             <img src="/Assets/Image/picture.jpeg">
+            {{if .UserLoginSession.IsLogin}}
+            <h2>{{.UserLoginSession.Name}}</h2>
+            <p>Fullstack developer</p>
+            {{else}}
             <h2>Adrian Saputra</h2>
             <p>Fullstack developer</p>
+            {{end}}
         </div>
         
     </div>

@@ -45,6 +45,21 @@ nav ul li a.active{
 }
 
 .nav-right a{
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.rgl{
+    color: black;
+    margin-right: 1em;
+}
+
+.rgl.go{
+    font-weight: bold;
+}
+
+.Contact{
     background-color: black;
     text-decoration: none;
     color: white;
@@ -78,7 +93,6 @@ nav ul li a.active{
     color: yellow;
 
 }
-
 
 .hamburger-container{
     display: flex;
@@ -231,7 +245,10 @@ nav ul li a:hover{
     font-weight: bold;
 }
 
-.nav-right a:hover{
+.rgl:hover{
+    font-weight: bold;
+}
+
+.Contact:hover{
     background-color: orange;
-    padding: 9px;
 }

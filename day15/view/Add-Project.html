@@ -24,11 +24,13 @@
         <ul>
             <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
             <li class="collapse-item"><a href="/">Home</a></li>
-            <li class="collapse-item"><a class="active" href="/add-Project">Add Project</a></li>
+            <li class="collapse-item"><a href="/add-Project" class="active">Add Project</a></li>
             <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
         </ul>
         <div class="nav-right collapse-item">
-            <a href="/contact">Contact Me</a>
+            <form method="POST" action="/logout">
+                <button>Logout</button>
+            </form>
         </div>
         <div class="nav-right" id="hamburger-btn">
             <button onclick="openHamburger()">

@@ -41,6 +41,9 @@ input{
     flex-direction: column;
 }
 
+.rgl-label label{
+    margin-top: 1em;
+}
 .Date-container{
     display: flex;
     justify-content: space-between;
@@ -239,6 +242,11 @@ input{
     color: white;
 }
 
+.flashMessage{
+    text-align: center;
+    margin-top: 1em;
+    color: red;
+}
 @media only screen and (max-width: 1000px){
     .container{
         width: 45%;

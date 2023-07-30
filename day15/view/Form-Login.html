@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Task 2</title>
+    <title>My Project</title>
+    <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
     <link rel="icon" type="Images/x-icon" href="/Assets/Image/LogoYoutube.png">
     <link rel="stylesheet" href="/Assets/css/all.css">
     <link rel="stylesheet" href="/Assets/css/nav.css">
+    <link rel="stylesheet" href="/Assets/css/MyProject.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Assets/fontawesome/css/all.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    #humburger-container{
+        display: none;
+    }
     </style>
+
 </head>
 <body>
+
+<!-- Navigation bar start -->
     <nav>
         <ul>
             <li><a href="/index"><img src="/Assets/Image/LogoYoutube.png" alt=""></a></li>
             <li class="collapse-item"><a href="/">Home</a></li>
-            <li class="collapse-item"><a href="/add-Project">Add Project</a></li>
             <li class="collapse-item"><a href="/testimoni">Testimoni</a></li>
         </ul>
         <div class="nav-right collapse-item">
             <a class="rgl" href="/form-register">Register</a>
-            <a class="rgl" href="/form-login">Login</a>
+            <a class="rgl go" href="/form-login">Login</a>
             <a class="Contact" href="/contact">Contact Me</a>
         </div>
         <div class="nav-right" id="hamburger-btn">
@@ -32,16 +39,34 @@
         </div>
     </nav>
     <div class="hamburger-container" id="hamburger-container">
-        
         <a href="/">Home</a>
-        <a href="/myProject">My Project</a>
+        <a href="/add-Project" class="nav-active">Add Project</a>
         <a href="/testimoni">Testimoni</a>
         <a href="/contact">Contact Me</a>
     </div>
-        <div class="card-home">
-            <h1>Welcome to My Website</h1>
-        </div>
+<!-- Navigation bar end-->
+    <form class="Form-container" action="/login" method="POST">
         
-        <script src="/Assets/js/hamburger.js"></script>
+        <!-- Title --> 
+        <div class="container">
+            <h1>LOGIN TO YOUR ACCOUNT</h1>
+            <div class="Project-name rgl-label">
+
+                <label>Email</label>
+                <input name="input-email" type="text">
+
+                <label>Password</label>
+                <input name="input-password" type="password">
+            </div>
+        <div class="btn-input">
+            <button type="submit">Submit</button>
+        </div>
+        {{if .FlashMessage}}
+        <p class="flashMessage">{{.FlashMessage}}</p>
+        {{end}}
+    </form>
+
+    <script src="/Assets/js/blog.js"></script>
+    <script src="/Assets/js/hamburger.js"></script>
 </body>
 </html>

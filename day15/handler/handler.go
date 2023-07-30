@@ -4,11 +4,14 @@ import (
 	"context"
 	"html/template"
 	"net/http"
+	"net/mail"
 	connection "personal-web/Connection"
 	"strconv"
 	"time"
 
+	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Project struct {
@@ -28,7 +31,20 @@ type Project struct {
 	Image        string
 }
 
+type User struct {
+	Id              int
+	Username        string
+	Email           string
+	Hashed_Password string
+}
+
+type UserLoginSession struct {
+	IsLogin bool
+	Name    string
+}
+
 var data_Projects = []Project{}
+var user_Login_Session = UserLoginSession{}
 
 // ------------------------------------------------------------------------HOME--------------------------------------------------------//
 func Home(c echo.Context) error {
@@ -38,7 +54,25 @@ func Home(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	return tmpl.Execute(c.Response(), nil)
+
+	sess, _ := session.Get("session", c)
+	if sess.Values["isLogin"] != true {
+		user_Login_Session.IsLogin = false
+	} else {
+		user_Login_Session.IsLogin = true
+		user_Login_Session.Name = sess.Values["name"].(string)
+	}
+
+	data := map[string]interface{}{
+		"FlashMessage":     sess.Values["message"],
+		"UserLoginSession": user_Login_Session,
+	}
+
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
+
+	return tmpl.Execute(c.Response(), data)
 }
 
 //------------------------------------------------------------------------CONTACT--------------------------------------------------------//
@@ -156,7 +190,24 @@ func Testimoni(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
-	return tmpl.Execute(c.Response(), nil)
+	sess, _ := session.Get("session", c)
+	if sess.Values["isLogin"] != true {
+		user_Login_Session.IsLogin = false
+	} else {
+		user_Login_Session.IsLogin = true
+		user_Login_Session.Name = sess.Values["name"].(string)
+	}
+
+	data := map[string]interface{}{
+		"FlashMessage":     sess.Values["message"],
+		"UserLoginSession": user_Login_Session,
+	}
+
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
+
+	return tmpl.Execute(c.Response(), data)
 }
 
 //----------------------------------------------------------------PROJECT DETAIL-----------------------------------------------------------//
@@ -315,4 +366,150 @@ func checkValue(list []string, object string) bool {
 		}
 	}
 	return false
+}
+
+// -----------------------------------------------------FORM REGISTER------------------------------------------------------//
+func Form_Register(c echo.Context) error {
+	tmpl, err := template.ParseFiles("view/Form-Register.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	sess, errSess := session.Get("session", c)
+	if errSess != nil {
+		return c.JSON(http.StatusInternalServerError, errSess.Error())
+	}
+
+	flash := map[string]interface{}{
+		"FlashMessage": sess.Values["message"],
+		"FlashStatus":  sess.Values["status"],
+	}
+
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
+
+	return tmpl.Execute(c.Response(), flash)
+}
+
+// -----------------------------------------------------REGISTER--------------------------------------------------------//
+func Register(c echo.Context) error {
+
+	input_Username := c.FormValue("input-username")
+	input_Email := c.FormValue("input-email")
+	input_Password := c.FormValue("input-password")
+
+	_, errEmail := mail.ParseAddress(input_Email)
+
+	if errEmail != nil {
+		return redirectWithMessage(c, "Invalid email format", false, "/form-register")
+	}
+
+	hased_Password, errHase := bcrypt.GenerateFromPassword([]byte(input_Password), 10)
+
+	if errHase != nil {
+		return c.JSON(http.StatusInternalServerError, errHase.Error())
+	}
+
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_user (name, email, password) VALUES ($1, $2, $3)", input_Username, input_Email, hased_Password)
+
+	if err != nil {
+		return redirectWithMessage(c, "Registration failed", false, "/form-register")
+	}
+
+	return redirectWithMessage(c, "Registration Success", true, "/")
+
+}
+
+// -----------------------------------------------------FORM LOGIN------------------------------------------------------//
+func Form_Login(c echo.Context) error {
+	tmpl, err := template.ParseFiles("view/Form-Login.html")
+
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err.Error())
+	}
+
+	sess, errSess := session.Get("session", c)
+	if errSess != nil {
+		return c.JSON(http.StatusInternalServerError, errSess.Error())
+	}
+
+	flash := map[string]interface{}{
+		"FlashMessage": sess.Values["message"],
+		"FlashStatus":  sess.Values["status"],
+	}
+
+	delete(sess.Values, "message")
+	delete(sess.Values, "status")
+	sess.Save(c.Request(), c.Response())
+
+	return tmpl.Execute(c.Response(), flash)
+}
+
+// -----------------------------------------------------LOGIN-------------------------------------------------------//
+func Login(c echo.Context) error {
+	input_Email := c.FormValue("input-email")
+	input_Password := c.FormValue("input-password")
+
+	if input_Email == "" || input_Password == "" {
+		return redirectWithMessage(c, "All fields must be filled", false, "/form-login")
+	}
+
+	_, errEmail := mail.ParseAddress(input_Email)
+
+	if errEmail != nil {
+		return redirectWithMessage(c, "Invalid email format", false, "/form-login")
+	}
+
+	user := User{}
+
+	errQuery := connection.Conn.QueryRow(context.Background(), "SELECT id, name, email, password FROM tb_user WHERE email=$1", input_Email).Scan(&user.Id, &user.Username, &user.Email, &user.Hashed_Password)
+
+	if errQuery != nil {
+		return redirectWithMessage(c, "Email/password wrong", false, "/form-login")
+	}
+
+	errPasword := bcrypt.CompareHashAndPassword([]byte(user.Hashed_Password), []byte(input_Password))
+
+	if errPasword != nil {
+		return redirectWithMessage(c, "Email/password wrong", false, "/form-login")
+	}
+
+	//Set session login if sucess
+
+	sess, _ := session.Get("session", c)
+	sess.Options.MaxAge = 10800 // 3 JAM -> berapa lama expired
+	sess.Values["message"] = "Login success!"
+	sess.Values["status"] = true
+	sess.Values["name"] = user.Username
+	sess.Values["email"] = user.Email
+	sess.Values["id"] = user.Id
+	sess.Values["isLogin"] = true
+	sess.Save(c.Request(), c.Response())
+
+	return c.Redirect(http.StatusMovedPermanently, "/")
+}
+
+func Logout(c echo.Context) error {
+	sess, _ := session.Get("session", c)
+	sess.Options.MaxAge = -1
+	sess.Save(c.Request(), c.Response())
+
+	return c.Redirect(http.StatusMovedPermanently, "/")
+}
+
+// -----------------------------------------------------REDIRECT WITH MESSAGE-------------------------------------------------------//
+
+func redirectWithMessage(c echo.Context, message string, status bool, redirectPath string) error {
+	sess, errSess := session.Get("session", c)
+
+	if errSess != nil {
+		return c.JSON(http.StatusInternalServerError, errSess.Error())
+	}
+	sess.Values["message"] = message
+	sess.Values["status"] = status
+	sess.Save(c.Request(), c.Response())
+
+	return c.Redirect(http.StatusMovedPermanently, redirectPath)
 }
