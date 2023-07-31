@@ -2,6 +2,7 @@ package main
 
 import (
 	connection "personal-web/Connection"
+	middleware "personal-web/Middleware"
 	"personal-web/handler"
 
 	"github.com/gorilla/sessions"
@@ -15,6 +16,7 @@ func main() {
 	connection.DatabaseConnect()
 
 	e.Static("/Assets", "Assets")
+	e.Static("/uploads", "uploads")
 
 	//List Get
 	e.GET("/", handler.Home)
@@ -29,9 +31,9 @@ func main() {
 	e.GET("/edit-project/:id", handler.Get_Edit_Project)
 
 	//List Post
-	e.POST("/post-project", handler.Post_Project)
+	e.POST("/post-project", middleware.Upload_File(handler.Post_Project))
 	e.POST("/delete-project/:id", handler.Delete_Project)
-	e.POST("/edit-project/:id", handler.Post_Edit_Project)
+	e.POST("/edit-project/:id", middleware.Upload_File(handler.Post_Edit_Project))
 	e.POST("/register", handler.Register)
 	e.POST("/login", handler.Login)
 	e.POST("/logout", handler.Logout)

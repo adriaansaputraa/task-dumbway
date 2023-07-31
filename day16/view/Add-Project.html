@@ -54,7 +54,7 @@
         <div id="content">
             {{ range $value := .Projects}}
             <div class="container-card">
-                <a href="/project-detail/{{$value.Id}}"><img src="/Assets/Image/Orang.jpg"/></a>
+                <a href="/project-detail/{{$value.Id}}"><img src="/uploads/{{$value.Image}}"/></a>
             <h3>{{$value.Project_Name}}</h3>
             <span>Durasi : {{$value.Duration}}</span>
             <div class="Post">

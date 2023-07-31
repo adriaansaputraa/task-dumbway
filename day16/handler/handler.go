@@ -106,7 +106,9 @@ func Add_Project(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
 
-	dataQuery, errQuery := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, technologies, image, post_date, time_post FROM tb_projects")
+	sess, _ := session.Get("session", c)
+
+	dataQuery, errQuery := connection.Conn.Query(context.Background(), "SELECT tb_projects.id, tb_projects.name, tb_projects.start_date, tb_projects.end_date, tb_projects.description, tb_projects.technologies, tb_projects.image, tb_projects.post_date, tb_projects.time_post FROM tb_projects LEFT JOIN tb_user ON tb_projects.user_id = tb_user.id where tb_projects.user_id = $1 ", sess.Values["id"].(int))
 
 	if errQuery != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
@@ -160,8 +162,11 @@ func Post_Project(c echo.Context) error {
 	add_techonologies := []string{add_Node_Js, add_Golang, add_React_Js, add_Javascript}
 	add_post_date := time.Now().Format("02-01-2006")
 	add_time_post := time.Now().Format("15:04")
+	add_Image := c.Get("dataFile").(string)
 
-	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_projects (name, start_date, end_date, description, technologies, image, post_date, time_post) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", add_Project_Name, add_Start_Date, add_End_Date, add_Description, add_techonologies, "default.jgp", add_post_date, add_time_post)
+	sess, _ := session.Get("session", c)
+
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_projects (name, start_date, end_date, description, technologies, image, post_date, time_post, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)", add_Project_Name, add_Start_Date, add_End_Date, add_Description, add_techonologies, add_Image, add_post_date, add_time_post, sess.Values["id"].(int))
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
@@ -300,11 +305,12 @@ func Post_Edit_Project(c echo.Context) error {
 	add_React_Js := c.FormValue("input-reactjs")
 	add_Javascript := c.FormValue("input-javascript")
 	add_techonologies := []string{add_Node_Js, add_Golang, add_React_Js, add_Javascript}
+	add_Image := c.Get("dataFile").(string)
 
 	StartDate, _ := time.Parse("2006-01-02", add_Start_Date)
 	EndDate, _ := time.Parse("2006-01-02", add_End_Date)
 
-	_, err := connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET name = $1, start_date = $2, end_date = $3, description = $4, technologies = $5 WHERE id = $6", add_Project_Name, StartDate, EndDate, add_Description, add_techonologies, idToInt)
+	_, err := connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET name = $1, start_date = $2, end_date = $3, description = $4, technologies = $5, image = $6 WHERE id = $7", add_Project_Name, StartDate, EndDate, add_Description, add_techonologies, add_Image, idToInt)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
