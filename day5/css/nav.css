@@ -1,6 +1,6 @@
 nav ul img{
-    width: 55px;
-    height: 55px;
+    width: 75px;
+    height: 75px;
     margin-top: 4px;
     object-fit: contain;
     margin-left: 30px;
@@ -8,7 +8,7 @@ nav ul img{
 
 nav{
     display: flex;
-    background-color: lightgray;
+    background-color: orange;
     height: 70px;
 }
 
@@ -17,19 +17,20 @@ nav ul{
     gap: 20px;
     height: 100%;
     align-items: center;
-    background-color: lightgray;
+    background-color: orange;
     width: 100%;
 }
 
 nav ul li{
     list-style-type: none;
-    margin-right: 30px;
+    margin-right: 20px;
 }
+
 
 nav ul li a{
     text-decoration: none;
     color: black;
-    font-size: medium;
+    font-size:medium;
 }
 
 nav ul li a.active{
@@ -42,12 +43,13 @@ nav ul li a.active{
     justify-content: flex-end;
     width: 60%;
     margin-right: 40px;
+    background: orange;
 }
 
 .nav-right a{
-    background-color: black;
+    background-color: rgb(31, 31, 121);
     text-decoration: none;
-    color: white;
+    color: orange;
     padding: 7px;
     border-radius: 10px;
 }
@@ -71,6 +73,14 @@ nav ul li a:hover{
 }
 
 .nav-right a:hover{
+    background-color: rgb(0, 0, 71);
+    color: white;
+}
+
+footer{
     background-color: orange;
-    padding: 9px;
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }

@@ -4,19 +4,23 @@ function addBlog(event) {
     event.preventDefault();
 
     let projectName = document.getElementById("input-projectname").value;
-    let startDate = new Date(document.getElementById("input-startdate").value);
-    let endDate = new Date(document.getElementById("input-endDate").value);
+    let startDate = document.getElementById("input-startdate").value;
+    let endDate = document.getElementById("input-endDate").value;
     let description = document.getElementById("input-descripton").value;
     let nodejs = document.getElementById("input-nodejs").checked;
     let golang = document.getElementById("input-golang").checked;
     let reactjs = document.getElementById("input-reactjs").checked;
     let javascript = document.getElementById("input-javascript").checked;
     let file = document.getElementById("input-image").files;
+    let getimage = document.getElementById("input-image").value;
 
     //DISTANCE DATE
 
-    let distance = endDate - startDate;
-    let hourInDay = 86400000; // conver milisecond -> 1 day
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+
+    let distance = end - start;
+    let hourInDay = 86400000; // convert milisecond -> 1 day
     let dayInWeek = 7;
     let dayInMonth = 30;
     let monthInYear = 12;
@@ -26,17 +30,15 @@ function addBlog(event) {
     let distanceInMonth = Math.floor(distance/(hourInDay*dayInMonth)) //Month
     let distanceInYear = Math.floor(distance/(hourInDay*dayInMonth*monthInYear)) //Year
 
-    console.log(distanceInDay)
-    console.log(distanceInWeek)
-    console.log(distanceInMonth)
-    console.log(distanceInYear)
+    if(getimage == ""){
+        return alert ("Needs upload image")
+    }
 
     duration = "";
 
-
     if(distanceInDay == 0){
         duration = "24 jam"
-
+    
     }else if(distanceInDay < 0){
         return alert("wrong input")
 
@@ -44,6 +46,7 @@ function addBlog(event) {
         duration = `${distanceInDay} day`
 
     }else if(distanceInWeek < 5){
+
         if(distanceInDay - (distanceInWeek*7) > 0){
             duration = `${distanceInWeek} Week ${distanceInDay-(distanceInWeek*7)} day`
         }else{
@@ -78,7 +81,6 @@ function addBlog(event) {
     
     let technologiesHTML = technologies.join('');
     
-    console.log(technologiesHTML);
 
   // TAKE THE VALUE OF IMAGES
     let image = URL.createObjectURL(file[0]);
@@ -110,7 +112,7 @@ function renderBlog() {
     for (let i = 0; i < dataBlog.length; i++) {
         document.getElementById("content").innerHTML += 
         `<div class="container-card">
-                    <a href="#"><img src= ${dataBlog[i].image} alt=""/></a>
+                    <a href="Project-Detail.html"><img src= ${dataBlog[i].image} alt=""/></a>
                 <h3>Dumbways Mobile App - 2023</h3>
                 <span>Durasi : ${dataBlog[i].duration}</span>
                 <div class="Post">
@@ -147,10 +149,6 @@ function getDurationPost(time){
     let month = Math.floor(day/30)
     let year = Math.floor(month/12)
 
-    // floor 1.5 -> 1
-    // ceil 1.3 -> 2
-    // round 1.3 -> 1   1.6 -> 2
-
     if(Seconds >= 60 && Minutes < 60){
         return `${Minutes} minute ago..`
 
@@ -162,8 +160,10 @@ function getDurationPost(time){
 
     }else if(day >= 30 && month < 12){
         return `${month} Month ago..`
+
     }else if(month >= 12){
         return `${year} year ago..`
+        
     }else{
         return `${Seconds} second ago..`
     }
