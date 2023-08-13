@@ -1,7 +1,9 @@
 let dataBlog = [];
+let after_rendering = false;
 
 function addBlog(event) {
     event.preventDefault();
+    // Jika Anda ingin mencegah form dari pengiriman sebenarnya (hanya untuk tujuan demonstrasi)
 
     let projectName = document.getElementById("input-projectname").value;
     let startDate = document.getElementById("input-startdate").value;
@@ -99,10 +101,29 @@ function addBlog(event) {
     console.log(blog);
     dataBlog.push(blog);
     
-    renderBlog();
-    
+    if (after_rendering) {
+        renderBlog();
+    }else {
+        after = true;
+        setInterval(function () {
+            renderBlog()
+        }, 1000);
+        renderBlog()
+    }
     console.log(dataBlog);
+    document.getElementById("Form-Project").reset();
+
 }
+
+document.getElementById('input-image').addEventListener('change', function() {
+    var fileName = this.files[0].name;
+    document.getElementById('file-name').textContent = fileName;
+});
+
+document.getElementById('Form-Project').addEventListener('submit', function(e) {
+    // Mengosongkan file-name saat form disubmit
+    document.getElementById('file-name').textContent = '';
+});
 
 //SHOW THE RESULT OF THE FORM BLOG
 
@@ -193,6 +214,3 @@ function convertdate(date){
     return `Post : ${getdate} ${getMonth} ${getYear} | ${getHours}:${getMinute}`
 }
 
-setInterval(function(){
-    renderBlog()
-}, 1000)
