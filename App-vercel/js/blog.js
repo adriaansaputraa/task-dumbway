@@ -1,7 +1,9 @@
 let dataBlog = [];
+let after_rendering = false;
 
 function addBlog(event) {
     event.preventDefault();
+    // Jika Anda ingin mencegah form dari pengiriman sebenarnya (hanya untuk tujuan demonstrasi)
 
     let projectName = document.getElementById("input-projectname").value;
     let startDate = document.getElementById("input-startdate").value;
@@ -20,7 +22,7 @@ function addBlog(event) {
     let end = new Date(endDate);
 
     let distance = end - start;
-    let hourInDay = 86400000; // conver milisecond -> 1 day
+    let hourInDay = 86400000; // convert milisecond -> 1 day
     let dayInWeek = 7;
     let dayInMonth = 30;
     let monthInYear = 12;
@@ -30,31 +32,15 @@ function addBlog(event) {
     let distanceInMonth = Math.floor(distance/(hourInDay*dayInMonth)) //Month
     let distanceInYear = Math.floor(distance/(hourInDay*dayInMonth*monthInYear)) //Year
 
-    console.log(distanceInDay)
-    console.log(distanceInWeek)
-    console.log(distanceInMonth)
-    console.log(distanceInYear)
-
-    if(projectName == ""){
-        return alert ("Project Name must be entered!")
-    }else if(startDate == ""){
-        return alert ("Start Date must be entered!")
-    }else if(endDate == ""){
-        return alert ("End Date must be entered!")
-    }else if(description == ""){
-        return alert ("Description must be entered!")
-    }else if(getimage == ""){
+    if(getimage == ""){
         return alert ("Needs upload image")
     }
 
-
-
     duration = "";
-
 
     if(distanceInDay == 0){
         duration = "24 jam"
-
+    
     }else if(distanceInDay < 0){
         return alert("wrong input")
 
@@ -62,6 +48,7 @@ function addBlog(event) {
         duration = `${distanceInDay} day`
 
     }else if(distanceInWeek < 5){
+
         if(distanceInDay - (distanceInWeek*7) > 0){
             duration = `${distanceInWeek} Week ${distanceInDay-(distanceInWeek*7)} day`
         }else{
@@ -96,7 +83,6 @@ function addBlog(event) {
     
     let technologiesHTML = technologies.join('');
     
-    console.log(technologiesHTML);
 
   // TAKE THE VALUE OF IMAGES
     let image = URL.createObjectURL(file[0]);
@@ -115,10 +101,29 @@ function addBlog(event) {
     console.log(blog);
     dataBlog.push(blog);
     
-    renderBlog();
-    
+    if (after_rendering) {
+        renderBlog();
+    }else {
+        after = true;
+        setInterval(function () {
+            renderBlog()
+        }, 1000);
+        renderBlog()
+    }
     console.log(dataBlog);
+    document.getElementById("Form-Project").reset();
+
 }
+
+document.getElementById('input-image').addEventListener('change', function() {
+    var fileName = this.files[0].name;
+    document.getElementById('file-name').textContent = fileName;
+});
+
+document.getElementById('Form-Project').addEventListener('submit', function(e) {
+    // Mengosongkan file-name saat form disubmit
+    document.getElementById('file-name').textContent = '';
+});
 
 //SHOW THE RESULT OF THE FORM BLOG
 
@@ -128,7 +133,7 @@ function renderBlog() {
     for (let i = 0; i < dataBlog.length; i++) {
         document.getElementById("content").innerHTML += 
         `<div class="container-card">
-                    <a href="#"><img src= ${dataBlog[i].image} alt=""/></a>
+                    <a href="Project-Detail.html"><img src= ${dataBlog[i].image} alt=""/></a>
                 <h3>Dumbways Mobile App - 2023</h3>
                 <span>Durasi : ${dataBlog[i].duration}</span>
                 <div class="Post">
@@ -165,10 +170,6 @@ function getDurationPost(time){
     let month = Math.floor(day/30)
     let year = Math.floor(month/12)
 
-    // floor 1.5 -> 1
-    // ceil 1.3 -> 2
-    // round 1.3 -> 1   1.6 -> 2
-
     if(Seconds >= 60 && Minutes < 60){
         return `${Minutes} minute ago..`
 
@@ -180,8 +181,10 @@ function getDurationPost(time){
 
     }else if(day >= 30 && month < 12){
         return `${month} Month ago..`
+
     }else if(month >= 12){
         return `${year} year ago..`
+        
     }else{
         return `${Seconds} second ago..`
     }
@@ -211,6 +214,3 @@ function convertdate(date){
     return `Post : ${getdate} ${getMonth} ${getYear} | ${getHours}:${getMinute}`
 }
 
-setInterval(function(){
-    renderBlog()
-}, 1000)

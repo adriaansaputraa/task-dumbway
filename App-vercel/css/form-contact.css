@@ -1,7 +1,13 @@
 .form-container{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 400px;
+    background-color: rgb(31, 31, 121);
+    padding: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 0.8em;
+    box-shadow: 0px 0px 10px;
 }
 
 .form-container div{
@@ -12,19 +18,19 @@
 .contact-container {
     display: flex;
     justify-content: center;
-    height: 100vh;
-    padding-top: 60px;
+    height: 80%;
     background-color: rgb(230, 230, 230);
 }
 .form-container div h2{
     text-align: center;
-    font-weight: bolder;
+    background-color: orange;
 }
 
 .form-container div label {
     font-size: medium;
     font-weight: bold;
     margin-top: 20px;
+    color: orange;
 }
 
 .custom-select select{
@@ -53,14 +59,8 @@ input {
     box-shadow: 0px 1.5px 2px;
 }
 
-.btn-input{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.btn-input button{
-    margin-top: 50px;
+.form-container button{
+    margin-top: 30px;
     background-color: black;
     color: white;
     width: 100px;
@@ -68,35 +68,10 @@ input {
     padding: 5px;
     border-radius: 20px;
     border: none;
-}
-
-@media only screen and (max-width: 1000px){
-    .form-container{
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-    }
-    
-}
-
-@media only screen and (max-width: 640px){
-    .form-container{
-        display: flex;
-        flex-direction: column;
-        width: 60%;
-    }
-    
-}
-
-@media only screen and (max-width: 300px){
-    .form-container{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-    }
-    
+    margin-left: 75% ;
 }
 
 .form-container button:hover{
     background-color: orange;
+    color: black;
 }
