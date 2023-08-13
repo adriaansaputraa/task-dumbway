@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contact</title>
-    <link rel="icon" type="Images/x-icon" href="Image/Escola.png">
+    <title>Task 2</title>
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link rel="icon" type="Images/x-icon" href="Image/LogoYoutube.png">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/form-contact.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -14,17 +16,26 @@
 <body>
     <nav>
         <ul>
-            <li><a href="Home.html"><img src="Image/Escola.png" alt=""></a></li>
-            <li><a href="Home.html">Home</a></li>
-            <li><a href="My-Project.html">My Project</a></li>
+            <li><a href="index.html"><img src="Image/LogoYoutube.png" alt=""></a></li>
+            <li class="collapse-item"><a href="Home.html">Home</a></li>
+            <li class="collapse-item"><a href="MyProject.html">My Project</a></li>
+            <li class="collapse-item"><a href="Testimoni.html">Testimoni</a></li>
         </ul>
-        <div class="nav-right">
-            <a href="Contact.html">Contact Me</a>
+        <div class="nav-right collapse-item">
+            <a href="#">Contact Me</a>
+        </div>
+        <div class="nav-right" id="hamburger-btn">
+            <button onclick="openHamburger()">
+                <i class="fa-solid fa-bars fa-2xl"></i>
+            </button>
         </div>
     </nav>
-    <hr>
-
-    
+    <div class="hamburger-container" id="hamburger-container">
+        <a href="Home.html">Home</a>
+        <a href="MyProject.html">My Project</a>
+        <a href="Testimoni.html">Testimoni</a>
+        <a href="Contact.html" class="nav-active">Contact Me</a>
+    </div>
     <div class="contact-container">
         <form class="form-container" id="myForm">
             <div>
@@ -51,7 +62,7 @@
                     Subject
                 </label>
                 <select id="input-subject">
-                    <option value="">Choose Your Subject ...</option>
+                    <option value=""></option>
                     <option value="Frontend Developer">Frontend Developer</option>
                     <option value="Backend Developer">Backend Developer</option>
                     <option value="Fullstack Developer">Fullstack Developer</option>
@@ -63,14 +74,12 @@
                 </label>
                 <textarea id="input-message"></textarea>
             </div>
-            <button type="submit" onclick="submitData(event)">Submit</button>
+            <div class="btn-input">
+                <button type="submit" onclick="submitData(event)">Submit</button>
+            </div>
         </form>
     </div>
-
-    <hr>
-    <footer>
-        © Escola | All Right Reserved.
-    </footer>
     <script src="js/contact.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 </html>
