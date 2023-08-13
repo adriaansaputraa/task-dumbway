@@ -7,7 +7,7 @@
     margin-top: 2em;
     margin-bottom: 2em;
     border-radius: 0.8em;
-    box-shadow: 0px 0px 10px;
+    box-shadow: 0px 0px 10px yellow;
 }
 
 .form-container div{
@@ -19,7 +19,6 @@
     display: flex;
     justify-content: center;
     height: 80%;
-    background-color: rgb(230, 230, 230);
 }
 .form-container div h2{
     text-align: center;

@@ -133,7 +133,7 @@ function renderBlog() {
     for (let i = 0; i < dataBlog.length; i++) {
         document.getElementById("content").innerHTML += 
         `<div class="container-card">
-                    <a href="ProjectDetail.html"><img src= ${dataBlog[i].image} alt=""/></a>
+                    <a href="project-detail.html"><img src= ${dataBlog[i].image} alt=""/></a>
                 <h3>Dumbways Mobile App - 2023</h3>
                 <span>Durasi : ${dataBlog[i].duration}</span>
                 <div class="Post">

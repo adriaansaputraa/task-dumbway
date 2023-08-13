@@ -32,7 +32,7 @@ input{
     margin-top: 2em;
     border-radius: 1.5em;
     background-color: rgb(31, 31, 121);
-    box-shadow: 0px 0px 10px;
+    box-shadow: 0px 0px 10px yellow;
 }
 .container h1{
     text-align: center;
@@ -152,12 +152,12 @@ input{
 
 .card-result {
     margin-top: 3em;
-    background-color: white;
 }
 
 .card-result h1{
     margin-top: 1em;
     text-align: center;
+    color: white;
 }
 
 #content {
@@ -173,7 +173,7 @@ input{
     border-radius: 0.5em;
     background-color: rgb(31, 31, 121);
     box-sizing: border-box;
-    box-shadow: 0px 0px 10px;
+    box-shadow: 0px 0px 10px yellow;
     transition-duration: 0.5s;
 }
 
