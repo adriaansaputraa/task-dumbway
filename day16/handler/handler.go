@@ -406,6 +406,10 @@ func Register(c echo.Context) error {
 	input_Email := c.FormValue("input-email")
 	input_Password := c.FormValue("input-password")
 
+	if input_Username == "" || input_Email == "" || input_Password == "" {
+		return redirectWithMessage(c, "All fields must be filled", false, "/form-register")
+	}
+
 	_, errEmail := mail.ParseAddress(input_Email)
 
 	if errEmail != nil {
