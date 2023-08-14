@@ -16,6 +16,7 @@ function addBlog(event) {
     let file = document.getElementById("input-image").files;
     let getimage = document.getElementById("input-image").value;
 
+
     //DISTANCE DATE
 
     let start = new Date(startDate);
