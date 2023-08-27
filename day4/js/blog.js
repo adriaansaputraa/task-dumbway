@@ -196,3 +196,5 @@ function convertdate(date){
 setInterval(function(){
     renderBlog()
 }, 1000)
+
+
