@@ -1,0 +1,166 @@
+nav ul img{
+    width: 75px;
+    height: 75px;
+    margin-top: 4px;
+    object-fit: contain;
+    margin-left: 30px;
+}
+
+nav{
+    display: flex;
+    background-color: orange;
+    height: 70px;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+    background-color: orange;
+    width: 100%;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-size:medium;
+}
+
+nav ul li a.active{
+    font-weight: bold;
+}
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+    margin-right: 40px;
+    background: orange;
+}
+
+.nav-right a{
+    background-color: rgb(31, 31, 121);
+    text-decoration: none;
+    color: orange;
+    padding: 7px;
+    border-radius: 10px;
+}
+.nav-right a:hover{
+    background-color: rgb(0, 0, 71);
+    color: white;
+}
+.card-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height:500px;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px;
+}
+
+nav ul li a:hover{
+    font-weight: bold;
+}
+
+
+
+.nav-right button{
+    width: 3em;
+    height: 3em;
+    border-radius: 0.5em;
+    background-color: rgb(31, 31, 121);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-right button :hover{
+    color: yellow;
+}
+
+footer{
+    background-color: orange;
+    width: 100%;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.hamburger-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: orange;
+    text-align: center;
+    animation: slide-in 1000ms;
+}
+
+.hamburger-container a{
+    text-decoration: none;
+    color: black;
+    padding: 1em;
+}
+
+#hamburger-container{
+    display: none;
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0.25;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hamburger-container a:hover{
+    background-color: rgb(122, 79, 0);
+    color: white;
+
+}
+
+@media only screen and (max-width: 1075px){
+    .collapse-item{
+        display: none;
+    }
+
+    .card-home h1{
+        text-align: center;
+    }
+
+    nav ul img{
+        width: 55px;
+        height: 55px;
+        margin-top: 4px;
+        object-fit: contain;
+        margin-left: -1em;
+    }
+    
+}
+
+@media only screen and (min-width: 1075px) {
+    #hamburger-btn {
+        display: none;
+    }
+    .hamburger-container a{
+        display: none;
+    }
+}
+
+nav ul li a:hover{
+    font-weight: bold;
+}
