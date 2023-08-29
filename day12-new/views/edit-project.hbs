@@ -43,32 +43,32 @@
     </div>
 <!-- Navigation bar end-->
 
-    <form class="Form-container" id="Form-Project" method="post" action="/my-project" onsubmit="addBlog(event)">
+    <form class="Form-container" id="Form-Project" method="post" action="edit-Project">
         
         <!-- Title --> 
         <div class="container">
-            <h1>ADD MY PROJECT</h1>
+            <h1>EDIT MY PROJECT</h1>
             <div class="Project-name">
                 <label>Project Name</label>
-                <input name="ProjectName" type="text" placeholder="Enter your project name..." required>
+                <input name="ProjectName" type="text" value="{{data.ProjectName}}" required>
             </div>
             
             <!-- Date --> 
             <div class="Date-container">
                 <div>
                     <label>Start Date</label>
-                    <input type="date" name="StartDate" required>
+                    <input type="date" name="StartDate" value="{{data.StartDate}}" required>
                 </div>
                 <div>
                     <label>End Date</label>
-                    <input name="EndDate" type="date" required>
+                    <input name="EndDate" type="date" value="{{data.EndDate}}" required>
                 </div>
             </div>
             
             <!-- Description --> 
             <div class="Descripton-container">
                 <label>Descripton</label>
-                <textarea name="Description" placeholder="Enter your description..." required></textarea>
+                <textarea name="Description" placeholder="Enter your description..." required>{{data.Description}}</textarea>
             </div>
             
 
@@ -77,19 +77,19 @@
                 <label>Technologies</label>
                 <div class="checkbox-group">
                     <div>
-                        <input type="checkbox" name="Nodejs" class="multi-input" value="nodejs"/>
+                        <input type="checkbox" name="Nodejs" class="multi-input" value="nodejs" {{#if data.Nodejs}}checked{{/if}}/>
                         <label>Node JS</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Golang" class="multi-input" value="golang"/>
+                        <input type="checkbox" name="Golang" class="multi-input" value="golang"{{#if data.Golang}}checked{{/if}}/>
                         <label>Golang</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Reactjs" class="multi-input" value="reactjs"/>
+                        <input type="checkbox" name="Reactjs" class="multi-input" value="reactjs" {{#if data.Reactjs}}checked{{/if}}/>
                         <label>React JS</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="Javascript" class="multi-input" value="javascript"/>
+                        <input type="checkbox" name="Javascript" class="multi-input" value="javascript" {{#if data.Javascript}}checked{{/if}}/>
                         <label>Javascript</label>
                     </div>
                 </div>
@@ -117,48 +117,5 @@
         <footer>
             © Escola | All Right Reserved.
         </footer>
-        <hr>
-        <h1>MY PROJECT</h1>
-
-        <div id="content">
-            {{#each dataProject}}
-            <div class="container-card">
-                <a href="/project-detail/{{@index}}"><img src="/Assets/Image/Orang.jpg"/></a>
-            <h3>{{this.ProjectName}}</h3>
-            <span>Durasi : {{this.duration}}</span>
-            <div class="Post">
-                <p>{{this.postDate}}</p>
-            </div>
-            <hr>
-            <p>
-                {{this.Description}}
-            </p>
-            <div class="programming-language">
-                {{#if this.Nodejs}}
-                <i class="fa-brands fa-js" id="javascript"></i>
-                {{/if}}
-
-                {{#if this.Golang}}
-                <i class="fa-brands fa-golang" id="golang"></i>
-                {{/if}}
-
-                {{#if this.Reactjs}}
-                <i class="fa-brands fa-react" id="reactsJS"></i>
-                {{/if}}
-
-                {{#if this.Javascript}}
-                <i class="fa-brands fa-java" id="java"></i>
-                {{/if}}
-            </div>
-            <div class="btn-group">
-                <a href="/edit-Project/{{@index}}">Edit</a>
-                <a href="/delete-project/{{@index}}">Delete</a>
-            </div>
-            </div>
-            {{/each}}
-        </div>
-    </div>
-    <script src="js/blog.js"></script>
-    <script src="js/hamburger.js"></script>
 </body>
 </html>

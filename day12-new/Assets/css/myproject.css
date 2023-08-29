@@ -234,20 +234,20 @@ input{
     display: flex;
 }
 
-.container-card .btn-group button {
+.btn-group a {
     width: 100%;
     margin: 1em;
     border-radius: 0.5em;
-    border: none;
+    text-decoration: none;
+    text-align: center;
     padding: 0.5em;
     background-color: black;
     color: white;
 }
 
-.btn-group button:hover {
+.btn-group a:hover {
     background-color: orange;
     color: black;
-    cursor: pointer;
 }
 
 .container-card:hover{
