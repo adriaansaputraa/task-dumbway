@@ -81,8 +81,7 @@ function EditProject(req, res){
 }
 
 function UpdateProject(req, res){
-    const id = parseInt(req.params.id, 10);
-
+    const {id} = req.params
     const ProjectIndex = dataProject.findIndex((project) => project.id === id);
 
     const{ProjectName, StartDate, EndDate, Description, Nodejs, Golang, Reactjs, Javascript} = req.body
@@ -102,14 +101,8 @@ function UpdateProject(req, res){
         postDate : convertdate(new Date())
     }
 
-    console.log(req.body)
     
-    if (ProjectIndex !== -1) {
     dataProject.splice(ProjectIndex, 1, newData);
-} else {
-    // Handle the error, for example:
-    return res.status(404).send("Project not found");
-}
 
     res.redirect('/my-project') 
 
